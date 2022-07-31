@@ -58,9 +58,9 @@ let images = [
   "img/IMG-20220420-WA0004.jpg",
   "img/IMG-20220420-WA0005.jpg",
   "img/IMG-20220420-WA0006.jpg",
+  "img/IMG-20220420-WA0007.jpg",
   "img/IMG-20220420-WA0009.jpg",
   "img/IMG-20220420-WA0010.jpg",
-  "img/IMG-20220726-WA0001.jpg",
   "img/IMG-20220726-WA0002.jpg",
   "img/IMG-20220726-WA0003.jpg",
 ];
