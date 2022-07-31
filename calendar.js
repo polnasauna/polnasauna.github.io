@@ -395,6 +395,15 @@
 })();
 
 !(function () {
+  function redirectToAnchor(anchor) {
+    // We remove previous anchors from the current URL
+    var redirectToURL = document.URL.replace(/#.*$/, "");
+
+    redirectToURL = redirectToURL + anchor;
+    window.location.href = redirectToURL;
+    window.location.reload();
+  }
+
   onSlotSelect = function (year, month, day, hour) {
     obj = document.forms["reservation"];
     obj.elements["year"].value = year;
@@ -404,6 +413,7 @@
 
     let term = document.getElementById("term");
     term.innerHTML = `${day}.${month}.${year} ${hour}:00h`;
+    redirectToAnchor("#reservation");
   };
 
   var calendar = new Calendar("#calendar", onSlotSelect);
