@@ -52,17 +52,17 @@ window.addEventListener("keydown", function (event) {
 
 let sliderImg = document.querySelector(".slider-img");
 let images = [
-  "IMG-20220420-WA0000.jpg",
-  "IMG-20220420-WA0001.jpg",
-  "IMG-20220420-WA0003.jpg",
-  "IMG-20220420-WA0004.jpg",
-  "IMG-20220420-WA0005.jpg",
-  "IMG-20220420-WA0006.jpg",
-  "IMG-20220420-WA0009.jpg",
-  "IMG-20220420-WA0010.jpg",
-  "IMG-20220726-WA0001.jpg",
-  "IMG-20220726-WA0002.jpg",
-  "IMG-20220726-WA0003.jpg",
+  "img/IMG-20220420-WA0000.jpg",
+  "img/IMG-20220420-WA0001.jpg",
+  "img/IMG-20220420-WA0003.jpg",
+  "img/IMG-20220420-WA0004.jpg",
+  "img/IMG-20220420-WA0005.jpg",
+  "img/IMG-20220420-WA0006.jpg",
+  "img/IMG-20220420-WA0009.jpg",
+  "img/IMG-20220420-WA0010.jpg",
+  "img/IMG-20220726-WA0001.jpg",
+  "img/IMG-20220726-WA0002.jpg",
+  "img/IMG-20220726-WA0003.jpg",
 ];
 let i = 0; // Current image index
 
@@ -80,7 +80,7 @@ function next() {
 }
 
 function setImage() {
-  return sliderImg.setAttribute("src", "img/" + images[i]);
+  return sliderImg.setAttribute("src", images[i]);
 }
 
 window.addEventListener("keydown", function (event) {
