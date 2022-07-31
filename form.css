@@ -64,7 +64,7 @@
 /* Reservation pop-up form */
 
 #reservation {
-  display: grid;
+  /* display: grid; */
   margin: 5% auto 0 auto;
   background-color: #83706238;
   padding: 30px;
@@ -86,6 +86,7 @@
 
 .re-button {
   background-color: #6f5e53;
+  width: 100%;
   color: #fff;
   font-size: 16px;
   border-radius: 4px;
@@ -108,11 +109,16 @@
 #phone,
 #email {
   font-family: "Raleway", sans-serif;
+  width: 100%;
 }
 
-#reservation input,
+/* #reservation input, */
 #reservation label {
   width: 100%;
+}
+
+.p-reservation {
+  color: #332d28;
 }
 
 @media (max-width: 646px) {
