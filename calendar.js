@@ -404,7 +404,9 @@
 
     let term = document.getElementById("term");
     term.innerHTML = `${day}.${month}.${year} ${hour}:00h`;
-    location.hash = "#reservation";
+
+    var reservation = document.getElementById("reservation");
+    reservation.scrollIntoView();
   };
 
   var calendar = new Calendar("#calendar", onSlotSelect);
