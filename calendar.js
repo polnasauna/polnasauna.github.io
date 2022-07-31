@@ -51,7 +51,7 @@
           res.json();
         })
         // .then(res => console.log(res))
-        .then((res) => (window.location.href = "success.html"))
+        .then((res) => (window.location.href = "success"))
         .catch((error) => {
           alert(error);
         })
