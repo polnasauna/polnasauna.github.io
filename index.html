@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POĽNÁ SAUNA</title>
+    <link rel="icon" href="/img/icons8-log-cabin-16.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="menu.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/13dba11563.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- mobile menu -->
+    <div class="menu-wrap">
+      <input type="checkbox" class="toggler">
+      <div class="hamburger"><div></div></div>
+      <div class="menu">
+          <div>
+              <div>
+                  <ul>
+                      <li><a href="sauna.html">Sauna</a></li>
+                      <li><a href="reservation.html">Rezervácia</a></li>
+                      <li><a href="contact.html">Kontakt</a></li>
+                      
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+    <!-- Header -->
+    <header id="header-home">
+      <div class="container">
+        <nav id="main-nav">
+          <!-- <a href="index.html" id="logo"
+            >POĽNÁ<span class="text-color">SAUNA</span></a
+          > -->
+          <a href="index.html" id="logo"><img src="sauna.png" id="img-logo" alt="logo"></a>
+          <ul>
+            <li><a href="sauna.html">Sauna</a></li>
+            <li><a href="reservation.html">Rezervácia</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+          </ul>
+        </nav>
+        <div id="showcase">
+          <div class="showcase-content">
+            <h1><span class="text-secondary"> POĽNÁ SAUNA</span></h1>
+            <p class="lead">
+              Spoj relaxačnú silu sauny a prírody a rezervuj si svoj termín
+            </p>
+            <a class="btn" href="reservation.html">Rezervácia</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section id="text">
+        <p>Jedinečné spojenie relaxu s psychohygienou v náruči prírody ti prináša <b>Poľná Sauna</b></p>
+        <br>
+        <p class="p-secondary"> Počas
+          saunovania ti chvíle spríjemní zvuk praskajúceho dreva a očarujúca prírodná panoráma siahajúca až
+          k štítom Vysokých Tatier. 
+          <!-- <br> Pri malom šťastí, ti spoločnosť môžu robiť aj bažant, srna či veverička, ktorí
+          sa tiež kochajú krásou prírody.  -->
+          Pri návšteve Poľnej Sauny je potrebné dodržiavať aj niekoľko pravidiel
+          pre našu a hlavne pre Vašu spokojnosť.</p>
+          <a class="btn" href="sauna.html">Pravidlá Sauny</a>
+      </section>
+      <section>
+        <div id="gallery">
+          <div class="image-container">
+            <div class="image">
+              <img
+                class="img"
+                src="img/IMG-20220420-WA0001.jpg"
+                alt="sauna picture"
+              />
+            </div>
+            <!-- <div class="image">
+              <img
+                class="img"
+                src="img/IMG-20220420-WA0002.jpg"
+                alt="sauna picture"
+              />
+            </div> -->
+            <div class="image">
+              <img
+                class="img"
+                src="img/IMG-20220420-WA0003.jpg"
+                alt="sauna picture"
+              />
+            </div>
+            <div class="image">
+              <img
+                class="img"
+                src="img/IMG-20220420-WA0004.jpg"
+                alt="sauna picture"
+              />
+            </div>
+            <div class="image">
+              <img
+                class="img"
+                src="img/IMG-20220420-WA0005.jpg"
+                alt="sauna picture"
+              />
+            </div>
+            <div class="image">
+              <img
+                class="img"
+                src="img/IMG-20220420-WA0006.jpg"
+                alt="sauna picture"
+              />
+            </div>
+            <!-- <div class="image">
+              <img
+                class="img"
+                src="img/IMG-20220420-WA0007.jpg"
+                alt="sauna picture"
+              />
+            </div> -->
+            <div class="image">
+              <img
+                class="img"
+                src="img/IMG-20220420-WA0010.jpg"
+                alt="sauna picture"
+              />
+            </div>
+            <div class="image">
+              <img
+                class="img"
+                src="img/IMG-20220420-WA0009.jpg"
+                alt="sauna picture"
+              />
+            </div>
+            <!-- <div class="image">
+              <img
+                class="img img10"
+                src=" img/IMG-20220420-WA0008.jpg"
+                alt="sauna picture"
+              />
+            </div> -->
+            <div class="image">
+              <img
+                class="img img10"
+                src="img/IMG-20220726-WA0001.jpg"
+                alt="sauna picture"
+              />
+            </div>
+            <div class="image">
+              <img
+                class="img img10"
+                src="img/IMG-20220726-WA0002.jpg"
+                alt="sauna picture"
+              />
+            </div>
+            <div class="image">
+              <img
+                class="img img10"
+                src="img/IMG-20220726-WA0003.jpg"
+                alt="sauna picture"
+              />
+            </div>
+          </div>
+
+          <div class="pop-img">
+            <span>&times;</span>
+            <img
+              src="img/IMG-20220420-WA0001.jpg"
+              alt="sauna"
+              class="slider-img"
+            />
+
+            <button class="btn btn-prev" onclick="prev()">&#9664</button>
+            
+            <button class="btn btn-next" onclick="next()">&#9654</button>
+          </div>
+        </div>
+      </section>
+      <a class="to-top" href="#"><i class="fa-solid fa-arrow-up"></i></a>
+    </main>
+
+    <footer id="footer">
+      <p class="copy">Copyright © 2022 - Poľná Sauna Nová Ľubovňa</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
