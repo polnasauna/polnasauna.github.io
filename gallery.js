@@ -50,6 +50,7 @@ let images = [
   "img/IMG-20220420-WA0010.jpg",
   "img/IMG-20220726-WA0002.jpg",
   "img/IMG-20220726-WA0003.jpg",
+  "img/IMG-20220801-WA0000.jpg",
 ];
 let i = 0; // Current image index
 
