@@ -3,7 +3,7 @@
 
   function Calendar(selector, slotCallback) {
     this.el = document.querySelector(selector);
-    this.api = "https://polnasauna.deta.dev";
+    this.api = "https://bookings.polnasauna.sk";
     this.current = moment().date(1);
     this.slotCallback = slotCallback;
     this.draw();
