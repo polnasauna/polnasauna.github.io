@@ -57,7 +57,7 @@
           };
         })
         .catch((error) => {
-          alert("Chyba:", error);
+          alert(error);
         });
     );
 
