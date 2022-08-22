@@ -58,18 +58,6 @@
         ))
     );
 
-    // fetch('/resource').then(function(response) {
-    //   if (response.status === 404) {
-    //     response.json().then(function(object) {
-    //       console.log(object.type, object.message)
-    //     })
-    //   } else if (response.status === 200) {
-    //     response.json().then(function(object) {
-    //       console.log('success')
-    //     })
-    //   }
-    // })
-
   };
 
   Calendar.prototype.draw = function () {
