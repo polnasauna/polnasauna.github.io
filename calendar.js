@@ -48,18 +48,28 @@
     return (
       fetch(url, options)
         .then((res) => {
-          if (res.status == 201) {
-            res.json().then(data => (window.location.href = "success"));
+          if res.status === 201 {
+            res.json().then((data) => (window.location.href = "success"));
           } else if (res.status == 409) {
-            res.json().then(data => (throw new Error(data.detail)));
+            res.json().then((data) => (alert(data.detail)));
           } else {
-            throw new Error("Nastala chyba");
+            alert("Nastala chyba");
           }
         })
-        .catch((error) => {
-          alert(error);
-        })
     );
+
+    // fetch('/resource').then(function(response) {
+    //   if (response.status === 404) {
+    //     response.json().then(function(object) {
+    //       console.log(object.type, object.message)
+    //     })
+    //   } else if (response.status === 200) {
+    //     response.json().then(function(object) {
+    //       console.log('success')
+    //     })
+    //   }
+    // })
+
   };
 
   Calendar.prototype.draw = function () {
