@@ -48,15 +48,14 @@
     return (
       fetch(url, options)
         .then((res) => {
-          if res.status === 201 {
+          if (res.status === 201) {
             res.json().then((data) => (window.location.href = "success"));
           } else if (res.status == 409) {
             res.json().then((data) => (throw new Error(data.detail)));
           } else {
             throw new Error("Nastala chyba");
           };
-        }
-        )
+        })
         .catch((error) => {
           alert("Chyba:", error);
         });
