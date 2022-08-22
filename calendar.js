@@ -24,6 +24,7 @@
   Calendar.prototype.submitBooking = function (
     name,
     email,
+    phone,
     year,
     month,
     day,
@@ -35,6 +36,7 @@
     const booking = {
       name: name,
       email: email,
+      phone: phone,
       date: `${year}-${month}-${day}`,
       hour: hour,
     };
@@ -420,11 +422,12 @@
 
     const name = elements["name"].value;
     const email = elements["email"].value;
+    const phone = elements["phone"].value;
     const year = elements["year"].value;
     const month = elements["month"].value;
     const day = elements["day"].value;
     const hour = elements["hour"].value;
 
-    calendar.submitBooking(name, email, year, month, day, hour);
+    calendar.submitBooking(name, email, phone, year, month, day, hour);
   });
 })();
