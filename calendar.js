@@ -54,7 +54,7 @@
             res.json().then((data) => (throw new Error(data.detail)));
           } else {
             throw new Error("Nastala chyba");
-          }
+          };
         }
         )
         .catch((error) => {
