@@ -46,8 +46,9 @@
     return (
       fetch(url, options)
         .then((res) => {
+          console.log(res.json())
           if (res.status == 409)
-            alert(res.json().detail)
+            throw new Error(res.json().detail)
           else if (res.status >= 400 && res.status < 600)
             throw new Error("Nastala chyba");
           res.json();
