@@ -47,15 +47,18 @@
     };
     return (
       fetch(url, options)
-        .then((res) => (
+        .then((res) =>
           if res.status === 201 {
             res.json().then((data) => (window.location.href = "success"));
           } else if (res.status == 409) {
-            res.json().then((data) => (alert(data.detail)));
+            res.json().then((data) => (throw new Error(data.detail)));
           } else {
-            alert("Nastala chyba");
+            throw new Error("Nastala chyba");
           }
-        ))
+        )
+        .catch((error) => {
+          alert("Chyba:", error);
+        });
     );
 
   };
