@@ -17,7 +17,7 @@
     return fetch(url)
       .then((res) => res.json())
       .catch((error) => {
-        console.error("Error:", error);
+        console.error("Chyba:", error);
       });
   };
 
@@ -46,7 +46,9 @@
     return (
       fetch(url, options)
         .then((res) => {
-          if (res.status >= 400 && res.status < 600)
+          if (res.status == 409)
+            alert(res.json().detail)
+          else if (res.status >= 400 && res.status < 600)
             throw new Error("Nastala chyba");
           res.json();
         })
