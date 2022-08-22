@@ -46,7 +46,6 @@
     return (
       fetch(url, options)
         .then((res) => {
-          console.log(res.json())
           if (res.status == 409)
             throw new Error(res.json().detail)
           else if (res.status >= 400 && res.status < 600)
