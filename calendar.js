@@ -46,14 +46,14 @@
     return (
       fetch(url, options)
         .then((res) => {
-          if (res.status == 409)
-            throw new Error(res.json().detail)
-          else if (res.status >= 400 && res.status < 600)
+          if (res.status == 201) {
+            res.json().then(data => (window.location.href = "success"));
+          } else if (res.status == 409) {
+            res.json().then(data => throw new Error(data.detail));
+          } else {
             throw new Error("Nastala chyba");
-          res.json();
+          }
         })
-        // .then(res => console.log(res))
-        .then((res) => (window.location.href = "success"))
         .catch((error) => {
           alert(error);
         })
