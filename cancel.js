@@ -17,7 +17,9 @@
 
   if (api_call.status == "404") {
       msg.innerHTML = "Rezervácia nenájdená";
-  } else {
+  } else if (api_call.status == "200") {
       msg.innerHTML = "Rezervácia zrušená";
+  } else {
+      msg.innerHTML = "Chyba: Rezerváciu sa nepodarilo zrušiť, kontaktujte prosím správcu.";
   }
  }();
