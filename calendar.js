@@ -54,13 +54,12 @@
             res.json().then((data) => (alert(data.detail)));
           } else {
             throw new Error("Nastala chyba");
-          };
+          }
         })
         .catch((error) => {
-          alert("Chyba:", error);
-        });
+          alert(error);
+        })
     );
-
   };
 
   Calendar.prototype.draw = function () {
