@@ -238,7 +238,7 @@
       +el.querySelectorAll(".day-number")[0].textContent;
     var day = this.current.clone().date(dayNumber);
 
-    var currentOpened = document.querySelector(".details");
+    var currentOpened = document.querySelector(".details");opacity
     var legend = document.querySelector(".legend");
     var arrow = document.querySelector(".arrow");
 
@@ -276,8 +276,6 @@
       //Create the arrow
       var arrow = createElement("div", "arrow");
 
-      // experiment
-      details.dataset.dayNumber = dayNumber;
       //Create the event wrapper
 
       details.appendChild(arrow);
@@ -285,6 +283,8 @@
       legend.style.visibility = "hidden";
     }
 
+    // experiment
+    details.dataset.dayNumber = dayNumber;
     // RAS
     if (daySlots.length > 0) this.renderSlots(daySlots, day, details);
 
