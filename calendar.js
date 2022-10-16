@@ -115,9 +115,10 @@
           self.month.className = "month in " + (self.next ? "next" : "prev");
         }, 16);
 
-        this.legend.parentNode.removeChild(this.legend);
-        this.legend = this.drawLegend(slots);
-        this.el.appendChild(this.legend);
+        if (self.legend)
+          self.legend.parentNode.removeChild(self.legend);
+        self.legend = self.drawLegend(slots);
+        self.el.appendChild(self.legend);
       });
     } else {
       this.month = createElement("div", "month");
