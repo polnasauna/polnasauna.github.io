@@ -311,7 +311,7 @@ body {
   line-height: 22px;
   align-items: center;
 
-  transition: 0.25s all ease-in-out;
+  transition: 0.5s all ease-in-out;
 }
 
 .entry {
