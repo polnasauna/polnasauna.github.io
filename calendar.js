@@ -238,7 +238,7 @@
       +el.querySelectorAll(".day-number")[0].textContent;
     var day = this.current.clone().date(dayNumber);
 
-    var currentOpened = document.querySelector(".details");opacity
+    var currentOpened = document.querySelector(".details");
     var legend = document.querySelector(".legend");
     var arrow = document.querySelector(".arrow");
 
