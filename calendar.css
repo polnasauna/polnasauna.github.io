@@ -180,33 +180,22 @@ body {
   margin: 0 1px;
 }
 
-/* .slot7 { background: rgba(249, 233, 0, 1); } */
-/* .slot8 { background: rgba(249, 233, 0, 1); } */
-/* .slot9 { background: rgba(249, 233, 0, 1); } */
-.slot10 {
-  background: #aac7e6;
+.slot7 .slot8 .slot9 .slot10 {
+  background: #f3ca9e;
   border-radius: 2px;
 }
-/* .slot11 { background: rgba(249, 233, 0, 1); } */
-/* .slot12 { background: rgba(249, 233, 0, 1); } */
-.slot13 {
-  background: #a67a53;
+.slot11 .slot12 .slot13 {
+  background: #aac7e6;;
   border-radius: 2px;
 }
-/* .slot14 { background: rgba(156, 202, 235, 1); } */
-/* .slot15 { background: rgba(156, 202, 235, 1); } */
-.slot16 {
-  background: #3c6494;
+.slot14 .slot15 .slot16 {
+  background: #61a279;
   border-radius: 2px;
 }
-/* .slot17 { background: rgba(153, 198, 109, 1); } */
-/* .slot18 { background: rgba(153, 198, 109, 1); } */
-.slot19 {
-  background: #53543b;
+.slot17 .slot18 .slot19 .slot20 {
+  background: #af7b67;;
   border-radius: 2px;
 }
-/* .slot20 { background: rgba(247, 167, 0, 1); } */
-/* .slot21 { background: rgba(247, 167, 0, 1); } */
 
 .details {
   position: relative;
@@ -342,16 +331,16 @@ body {
   left: 14px;
 }
 
-.entry.slot10:after {
+.entry.slot7:after .entry.slot8:after .entry.slot9:after .entry.slot10:after {
   background: #aac7e6;
 }
-.entry.slot13:after {
+.entry.slot11:after .entry.slot12:after .entry.slot13:after {
   background: #a67a53;
 }
-.entry.slot16:after {
+.entry.slot14:after .entry.slot15:after .entry.slot16:after {
   background: #3c6494;
 }
-.entry.slot19:after {
+.entry.slot17:after .entry.slot18:after .entry.slot19:after .entry.slot20:after {
   background: #53543b;
 }
 
@@ -547,10 +536,20 @@ body {
     border-radius: 0.5px;
   }
 
+  .slot7,
+  .slot8,
+  .slot9,
   .slot10,
+  .slot11,
+  .slot12,
   .slot13,
+  .slot14,
+  .slot15,
   .slot16,
-  .slot19 {
+  .slot17,
+  .slot18,
+  .slot19,
+  .slot20 {
     height: 6px;
     width: 6px;
   }
@@ -563,10 +562,20 @@ body {
     border-radius: 0.5px;
   }
 
+  .slot7,
+  .slot8,
+  .slot9,
   .slot10,
+  .slot11,
+  .slot12,
   .slot13,
+  .slot14,
+  .slot15,
   .slot16,
-  .slot19 {
+  .slot17,
+  .slot18,
+  .slot19,
+  .slot20 {
     height: 6px;
     width: 6px;
   }
