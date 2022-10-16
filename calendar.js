@@ -278,7 +278,7 @@
       var arrow = createElement("div", "arrow");
 
       // experiment
-      details.dataset.day = day;
+      details.dataset.dayNumber = dayNumber;
       //Create the event wrapper
 
       details.appendChild(arrow);
