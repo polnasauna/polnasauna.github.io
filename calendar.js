@@ -109,7 +109,7 @@
         self.month = createElement("div", "month");
         self.backFill();
         self.currentMonth(slots);
-        self.fowardFill();
+        self.forwardFill();
         self.el.appendChild(self.month);
         window.setTimeout(function () {
           self.month.className = "month in " + (self.next ? "next" : "prev");
@@ -120,10 +120,13 @@
       this.el.appendChild(this.month);
       this.backFill();
       this.currentMonth(slots);
-      this.fowardFill();
+      this.forwardFill();
       this.month.className = "month new";
     }
-    this.drawLegend(slots);
+    if (this.legend)
+      this.legend.parentNode.removeChild(this.legend);
+    this.legend = this.drawLegend(slots);
+    this.el.appendChild(this.legend);
   };
 
   Calendar.prototype.backFill = function () {
@@ -141,7 +144,7 @@
     }
   };
 
-  Calendar.prototype.fowardFill = function () {
+  Calendar.prototype.forwardFill = function () {
     var clone = this.current.clone().add(1, "months").subtract(1, "days");
     var dayOfWeek = clone.day();
 
@@ -344,7 +347,7 @@
       legend.appendChild(span);
       legend.appendChild(div);
     });
-    this.el.appendChild(legend);
+    return legend;
   };
 
   Calendar.prototype.nextMonth = function () {
