@@ -34,7 +34,7 @@ body {
   /* margin-right: 65%;
   margin: 30px; */
   margin: auto;
-  height: 640px;
+ // height: 640px;
   overflow: hidden;
 }
 
@@ -299,7 +299,8 @@ body {
 }
 
 .legend {
-  position: absolute;
+//  position: absolute;
+  margin-top: 20px;
   padding: 7px 10px;
   display: flex;
   justify-content: space-evenly;

@@ -114,6 +114,10 @@
         window.setTimeout(function () {
           self.month.className = "month in " + (self.next ? "next" : "prev");
         }, 16);
+
+        this.legend.parentNode.removeChild(this.legend);
+        this.legend = this.drawLegend(slots);
+        this.el.appendChild(this.legend);
       });
     } else {
       this.month = createElement("div", "month");
@@ -122,11 +126,9 @@
       this.currentMonth(slots);
       this.forwardFill();
       this.month.className = "month new";
+      this.legend = this.drawLegend(slots);
+      this.el.appendChild(this.legend);
     }
-    if (this.legend)
-      this.legend.parentNode.removeChild(this.legend);
-    this.legend = this.drawLegend(slots);
-    this.el.appendChild(this.legend);
   };
 
   Calendar.prototype.backFill = function () {
