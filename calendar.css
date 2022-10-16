@@ -310,6 +310,8 @@ body {
   border-radius: 3px;
   line-height: 22px;
   align-items: center;
+
+  transition: 0.25s all ease-in-out;
 }
 
 .entry {

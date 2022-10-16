@@ -252,7 +252,7 @@
         _events.forEach(function(ev) {
           currentOpened.addEventListener(ev, function () {
             currentOpened.parentNode.removeChild(currentOpened);
-            legend.style.visibility = "visible";
+            legend.style.opacity = 1;
           });
         });
         currentOpened.className = "details out";
@@ -280,7 +280,7 @@
 
       details.appendChild(arrow);
       el.parentNode.appendChild(details);
-      legend.style.visibility = "hidden";
+      legend.style.opacity = 0;
     }
 
     // experiment
