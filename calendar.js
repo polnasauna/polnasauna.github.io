@@ -242,12 +242,12 @@
     var legend = document.querySelector(".legend");
     var arrow = document.querySelector(".arrow");
 
-    //Check to see if there is an open details box on the current row
+    // check to see if there is an open details box on the current row (week)
     if (currentOpened && currentOpened.parentNode === el.parentNode) {
       details = currentOpened;
 
       // check current day
-      if (details.day == day) {
+      if (details.dataset.day == day) {
       } else {
         const _events = ["webkitAnimationEnd", "oanimationend", "msAnimationEnd", "animationend"];
         _events.forEach(function(ev) {
@@ -278,7 +278,7 @@
       var arrow = createElement("div", "arrow");
 
       // experiment
-      details.day = day;
+      details.dataset.day = day;
       //Create the event wrapper
 
       details.appendChild(arrow);
