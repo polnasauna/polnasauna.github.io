@@ -261,7 +261,6 @@
         _events.forEach(function(ev) {
           currentOpened.addEventListener(ev, function () {
             currentOpened.parentNode.removeChild(currentOpened);
-            legend.style.visibility = "visible";
           });
         });
         currentOpened.className = "details out";
