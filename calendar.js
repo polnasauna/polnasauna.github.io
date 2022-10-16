@@ -348,7 +348,7 @@
   Calendar.prototype.drawLegend = function (slots) {
     var legend = createElement("div", "legend");
 
-    var timeSlots = [...new Set(slots.flat())];
+    var timeSlots = [...new Set(slots.flat())].sort(function(a, b){return a - b});
     // console.log(timeSlots);
 
     timeSlots.forEach(function (slot) {
