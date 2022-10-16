@@ -246,9 +246,8 @@
     if (currentOpened && currentOpened.parentNode === el.parentNode) {
       details = currentOpened;
 
-      // check current day
+      // close details if clicked on the same day
       if (details.dataset.dayNumber == dayNumber) {
-      } else {
         const _events = ["webkitAnimationEnd", "oanimationend", "msAnimationEnd", "animationend"];
         _events.forEach(function(ev) {
           currentOpened.addEventListener(ev, function () {
