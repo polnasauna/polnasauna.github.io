@@ -247,7 +247,7 @@
       details = currentOpened;
 
       // check current day
-      if (details.dataset.day == day) {
+      if (details.dataset.dayNumber == dayNumber) {
       } else {
         const _events = ["webkitAnimationEnd", "oanimationend", "msAnimationEnd", "animationend"];
         _events.forEach(function(ev) {
