@@ -240,23 +240,19 @@
 
     var currentOpened = document.querySelector(".details");
     var legend = document.querySelector(".legend");
+    var arrow = document.querySelector(".arrow");
 
     //Check to see if there is an open details box on the current row
     if (currentOpened && currentOpened.parentNode === el.parentNode) {
       details = currentOpened;
-      arrow = document.querySelector(".arrow");
-      // close
-      if (currentOpened) {
-        const _events = ["webkitAnimationEnd", "oanimationend", "msAnimationEnd", "animationend"];
-        _events.forEach(function(ev) {
-          currentOpened.addEventListener(ev, function () {
-            currentOpened.parentNode.removeChild(currentOpened);
-            legend.style.visibility = "visible";
-          });
+      const _events = ["webkitAnimationEnd", "oanimationend", "msAnimationEnd", "animationend"];
+      _events.forEach(function(ev) {
+        currentOpened.addEventListener(ev, function () {
+          currentOpened.parentNode.removeChild(currentOpened);
+          legend.style.visibility = "visible";
         });
-        currentOpened.className = "details out";
-        // ////////////////////////////////////////////
-      }
+      });
+      currentOpened.className = "details out";
     } else {
       // Close the open events on differnt week row
       // currentOpened && currentOpened.parentNode.removeChild(currentOpened);
