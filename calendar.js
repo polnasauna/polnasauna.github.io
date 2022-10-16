@@ -251,7 +251,7 @@
         _events.forEach(function(ev) {
           currentOpened.addEventListener(ev, function () {
             currentOpened.parentNode.removeChild(currentOpened);
-            legend.style.visibility = "hidden";
+            legend.style.visibility = "visible";
           });
         });
         currentOpened.className = "details out";
@@ -281,7 +281,7 @@
 
       details.appendChild(arrow);
       el.parentNode.appendChild(details);
-      legend.style.visibility = "visible";
+      legend.style.visibility = "hidden";
     }
 
     // RAS
