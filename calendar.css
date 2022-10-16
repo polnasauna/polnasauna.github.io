@@ -306,10 +306,9 @@ body {
   justify-content: space-evenly;
   bottom: 10px;
   width: 100%;
-  background: #7b7069;
-  //color: #7b7069;
-  border-radius: 3px;
-  line-height: 22px;
+  //background: #7b7069;
+  color: #7b7069;
+  border-top: solid 1px #b3aead;
   align-items: center;
 
   transition: 0.5s all ease-in-out;
