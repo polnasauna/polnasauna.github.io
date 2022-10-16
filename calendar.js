@@ -239,25 +239,20 @@
     var day = this.current.clone().date(dayNumber);
 
     var currentOpened = document.querySelector(".details");
+    var legend = document.querySelector(".legend");
 
     //Check to see if there is an open details box on the current row
     if (currentOpened && currentOpened.parentNode === el.parentNode) {
       details = currentOpened;
       arrow = document.querySelector(".arrow");
       // close
-      // ////////////////////////////////////////////
       if (currentOpened) {
-        currentOpened.addEventListener("webkitAnimationEnd", function () {
-          currentOpened.parentNode.removeChild(currentOpened);
-        });
-        currentOpened.addEventListener("oanimationend", function () {
-          currentOpened.parentNode.removeChild(currentOpened);
-        });
-        currentOpened.addEventListener("msAnimationEnd", function () {
-          currentOpened.parentNode.removeChild(currentOpened);
-        });
-        currentOpened.addEventListener("animationend", function () {
-          currentOpened.parentNode.removeChild(currentOpened);
+        const _events = ["webkitAnimationEnd", "oanimationend", "msAnimationEnd", "animationend"];
+        _events.forEach(function(ev) {
+          currentOpened.addEventListener(ev, function () {
+            currentOpened.parentNode.removeChild(currentOpened);
+            legend.style.visibility = "hidden";
+          });
         });
         currentOpened.className = "details out";
         // ////////////////////////////////////////////
@@ -266,17 +261,12 @@
       // Close the open events on differnt week row
       // currentOpened && currentOpened.parentNode.removeChild(currentOpened);
       if (currentOpened) {
-        currentOpened.addEventListener("webkitAnimationEnd", function () {
-          currentOpened.parentNode.removeChild(currentOpened);
-        });
-        currentOpened.addEventListener("oanimationend", function () {
-          currentOpened.parentNode.removeChild(currentOpened);
-        });
-        currentOpened.addEventListener("msAnimationEnd", function () {
-          currentOpened.parentNode.removeChild(currentOpened);
-        });
-        currentOpened.addEventListener("animationend", function () {
-          currentOpened.parentNode.removeChild(currentOpened);
+        const _events = ["webkitAnimationEnd", "oanimationend", "msAnimationEnd", "animationend"];
+        _events.forEach(function(ev) {
+          currentOpened.addEventListener(ev, function () {
+            currentOpened.parentNode.removeChild(currentOpened);
+            legend.style.visibility = "hidden";
+          });
         });
         currentOpened.className = "details out";
       }
@@ -291,12 +281,13 @@
 
       details.appendChild(arrow);
       el.parentNode.appendChild(details);
+      legend.style.visibility = "visible";
     }
 
     // RAS
     if (daySlots.length > 0) this.renderSlots(daySlots, day, details);
 
-    arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + 27 + "px";
+    arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + el.offsetWidth/2 + "px";
   };
 
   Calendar.prototype.renderSlots = function (daySlots, date, ele) {
