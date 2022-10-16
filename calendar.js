@@ -245,14 +245,19 @@
     //Check to see if there is an open details box on the current row
     if (currentOpened && currentOpened.parentNode === el.parentNode) {
       details = currentOpened;
-      const _events = ["webkitAnimationEnd", "oanimationend", "msAnimationEnd", "animationend"];
-      _events.forEach(function(ev) {
-        currentOpened.addEventListener(ev, function () {
-          currentOpened.parentNode.removeChild(currentOpened);
-          legend.style.visibility = "visible";
+
+      // check current day
+      if (details.day == day) {
+      } else {
+        const _events = ["webkitAnimationEnd", "oanimationend", "msAnimationEnd", "animationend"];
+        _events.forEach(function(ev) {
+          currentOpened.addEventListener(ev, function () {
+            currentOpened.parentNode.removeChild(currentOpened);
+            legend.style.visibility = "visible";
+          });
         });
-      });
-      currentOpened.className = "details out";
+        currentOpened.className = "details out";
+      }
     } else {
       // Close the open events on differnt week row
       // currentOpened && currentOpened.parentNode.removeChild(currentOpened);
@@ -272,6 +277,8 @@
       //Create the arrow
       var arrow = createElement("div", "arrow");
 
+      // experiment
+      details.day = day;
       //Create the event wrapper
 
       details.appendChild(arrow);
@@ -310,21 +317,12 @@
 
     if (currentWrapper) {
       currentWrapper.className = "events out";
-      currentWrapper.addEventListener("webkitAnimationEnd", function () {
-        currentWrapper.parentNode.removeChild(currentWrapper);
-        ele.appendChild(wrapper);
-      });
-      currentWrapper.addEventListener("oanimationend", function () {
-        currentWrapper.parentNode.removeChild(currentWrapper);
-        ele.appendChild(wrapper);
-      });
-      currentWrapper.addEventListener("msAnimationEnd", function () {
-        currentWrapper.parentNode.removeChild(currentWrapper);
-        ele.appendChild(wrapper);
-      });
-      currentWrapper.addEventListener("animationend", function () {
-        currentWrapper.parentNode.removeChild(currentWrapper);
-        ele.appendChild(wrapper);
+      const _events = ["webkitAnimationEnd", "oanimationend", "msAnimationEnd", "animationend"];
+      _events.forEach(function(ev) {
+        currentWrapper.addEventListener(ev, function () {
+          currentWrapper.parentNode.removeChild(currentWrapper);
+          ele.appendChild(wrapper);
+        });
       });
     } else {
       ele.appendChild(wrapper);
