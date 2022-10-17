@@ -127,44 +127,45 @@ a {
   margin: 0 40%;
 } */
 
+
 #header-home {
   background-image: url(/img/IMG-20220420-WA0000.jpg);
-  background-repeat: no-repeat;
+  background-repeat: round;
   background-size: cover;
   height: 630px;
 }
 
 #header-home-contact {
   background-image: url(/img/IMG-20220420-WA0006.jpg);
-  background-repeat: no-repeat;
+  background-repeat: round;
   background-size: cover;
   height: 630px;
 }
 
 /* #header-home-success {
   background-image: url(/img/IMG-20220420-WA0005.jpg);
-  background-repeat: no-repeat;
+  background-repeat: round;
   background-size: cover;
   height: 630px; 
   }*/
 
 #header-home-reservation {
   background-image: url(/img/IMG-20220420-WA0010.jpg);
-  background-repeat: no-repeat;
+  background-repeat: round;
   background-size: cover;
   height: 630px;
 }
 
 #header-home-sauna {
   background-image: url(/img/IMG-20220726-WA0003.jpg);
-  background-repeat: no-repeat;
+  background-repeat: round;
   background-size: cover;
   height: 550px;
 }
 
 #success {
   background-image: url(/img/IMG-20220420-WA0005.jpg);
-  background-repeat: no-repeat;
+  background-repeat: round;
   background-size: cover;
   width: 100vw;
   height: 100vh;
@@ -656,6 +657,7 @@ a {
 
   #header-home-contact {
     height: 350px;
+    background-repeat: no-repeat;
   }
 
   #header-home-contact h1 {
@@ -664,6 +666,7 @@ a {
 
   #header-home-reservation {
     height: 350px;
+    background-repeat: no-repeat;
   }
 
   #header-home-reservation h1 {
@@ -672,6 +675,13 @@ a {
 
   #header-home-sauna {
     height: 350px;
+    background-repeat: no-repeat;
+  }
+  #header-home {
+    background-repeat: no-repeat;
+  }
+  #success {
+    background-repeat: no-repeat;
   }
 }
 
