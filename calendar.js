@@ -134,7 +134,7 @@
 
   Calendar.prototype.backFill = function () {
     var clone = this.current.clone();
-    var dayOfWeek = clone.day();
+    var dayOfWeek = clone.weekday();
 
     if (!dayOfWeek) {
       return;
@@ -149,7 +149,7 @@
 
   Calendar.prototype.forwardFill = function () {
     var clone = this.current.clone().add(1, "months").subtract(1, "days");
-    var dayOfWeek = clone.day();
+    var dayOfWeek = clone.weekday();
 
     if (dayOfWeek === 6) {
       return;
@@ -172,7 +172,7 @@
   };
 
   Calendar.prototype.getWeek = function (day) {
-    if (!this.week || day.day() === 0) {
+    if (!this.week || day.weekday() === 0) {
       this.week = createElement("div", "week");
       this.month.appendChild(this.week);
     }
