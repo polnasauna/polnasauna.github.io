@@ -182,18 +182,20 @@
     var self = this;
     this.getWeek(day);
 
-    // outer Day
     var outer = createElement("div", this.getDayClass(day));
 
-    // RAS
-    if (
-      day.isSameOrAfter(today, "day") &&
-      day.month() === this.current.month() &&
-      daySlots.length > 0
-    ) {
-      outer.addEventListener("click", function () {
-        self.toggleDay(this, daySlots);
-      });
+    if (day.month() === this.current.month()) {
+      if (day.isSameOrAfter(today, "day") && daySlots.length > 0) {
+        outer.addEventListener("click", function () {
+          self.toggleDay(this, daySlots);
+        });
+      }
+    } else {
+      if (day.isAfter(this.current)) {
+          outer.addEventListener("click", function() { self.nextMonth() });
+      } else if (day.isBefore(this.current)) {
+          outer.addEventListener("click", function() { self.prevMonth() });
+      }
     }
 
     var name = createElement("div", "day-name", day.format("ddd"));
