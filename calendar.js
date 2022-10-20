@@ -7,13 +7,12 @@
     this.current = moment().date(1);
     this.slotCallback = slotCallback;
     this.draw();
-    this.addSwipeListener();
   }
 
-  Calendar.prototype.addSwipeListener = function () {
+  Calendar.prototype.addSwipeListener = function (el) {
     var self = this;
-    this.el.addEventListener("touchstart", startTouch, false);
-    this.el.addEventListener("touchmove", moveTouch, false);
+    el.addEventListener("touchstart", startTouch, false);
+    el.addEventListener("touchmove", moveTouch, false);
 
     // Swipe Up / Down / Left / Right
     var initialX = null;
@@ -163,6 +162,7 @@
           self.legend.parentNode.removeChild(self.legend);
         self.legend = self.drawLegend(slots);
         self.el.appendChild(self.legend);
+        self.addSwipeListener(self.month);
       });
     } else {
       this.month = createElement("div", "month");
@@ -173,6 +173,7 @@
       this.month.className = "month new";
       this.legend = this.drawLegend(slots);
       this.el.appendChild(this.legend);
+      this.addSwipeListener(this.month);
     }
   };
 
