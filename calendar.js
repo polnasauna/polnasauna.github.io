@@ -9,46 +9,6 @@
     this.draw();
   }
 
-  Calendar.prototype.addSwipeListener = function (el) {
-    var self = this;
-    el.addEventListener("touchstart", startTouch, false);
-    el.addEventListener("touchmove", moveTouch, false);
-
-    // Swipe Up / Down / Left / Right
-    var initialX = null;
-    var initialY = null;
-
-    function startTouch(e) {
-      initialX = e.touches[0].clientX;
-      initialY = e.touches[0].clientY;
-    };
-
-    function moveTouch(e) {
-      if (initialX === null || initialY === null)
-        return;
-
-      var currentX = e.touches[0].clientX;
-      var currentY = e.touches[0].clientY;
-
-      var diffX = initialX - currentX;
-      var diffY = initialY - currentY;
-
-      if (Math.abs(diffX) > Math.abs(diffY)) {
-        // sliding horizontally
-        if (diffX > 0) {
-          self.nextMonth();
-        } else {
-          self.prevMonth();
-        }
-        e.preventDefault();
-      }
-
-      initialX = null;
-      initialY = null;
-
-    };
-  }
-
   Calendar.prototype.fetchAvailableSlots = function () {
     let year = this.current.year();
     let month = this.current.month() + 1;
@@ -159,7 +119,6 @@
           self.legend.parentNode.removeChild(self.legend);
         self.legend = self.drawLegend(slots);
         self.el.appendChild(self.legend);
-        self.addSwipeListener(self.month);
       });
     } else {
       this.month = createElement("div", "month");
@@ -170,7 +129,6 @@
       this.month.className = "month new";
       this.legend = this.drawLegend(slots);
       this.el.appendChild(this.legend);
-      this.addSwipeListener(this.month);
     }
   };
 
