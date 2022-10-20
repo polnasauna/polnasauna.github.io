@@ -24,10 +24,7 @@
     };
 
     function moveTouch(e) {
-      if (initialX === null)
-        return;
-
-      if (initialY === null)
+      if (initialX === null || initialY === null)
         return;
 
       var currentX = e.touches[0].clientX;
@@ -43,12 +40,12 @@
         } else {
           self.prevMonth();
         }
+        e.preventDefault();
       }
 
       initialX = null;
       initialY = null;
 
-      e.preventDefault();
     };
   }
 
