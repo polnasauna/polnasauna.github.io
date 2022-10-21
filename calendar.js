@@ -63,6 +63,7 @@
   };
 
   Calendar.prototype.draw = function () {
+    this.drawing = true
     this.drawHeader();
     this.fetchAvailableSlots().then((slots) => {
       this.drawMonth(slots);
@@ -79,14 +80,10 @@
       this.title = createElement("h1");
 
       var right = createElement("div", "right");
-      right.addEventListener("click", function () {
-        self.nextMonth();
-      });
+      right.addEventListener("click", () => self.nextMonth());
 
       var left = createElement("div", "left");
-      left.addEventListener("click", function () {
-        self.prevMonth();
-      });
+      left.addEventListener("click", () => self.prevMonth());
 
       //Append the Elements
       this.header.appendChild(this.title);
@@ -119,6 +116,7 @@
           self.legend.parentNode.removeChild(self.legend);
         self.legend = self.drawLegend(slots);
         self.el.appendChild(self.legend);
+        self.drawing = false
       });
     } else {
       this.month = createElement("div", "month");
@@ -129,6 +127,7 @@
       this.month.className = "month new";
       this.legend = this.drawLegend(slots);
       this.el.appendChild(this.legend);
+      this.drawing = false
     }
   };
 
@@ -356,6 +355,8 @@
   };
 
   Calendar.prototype.nextMonth = function () {
+    if (this.drawing)
+          return;
     // going too much into the future is not allowed
     var nextYear = today.clone();
     nextYear.add(11, "months");
@@ -367,6 +368,8 @@
   };
 
   Calendar.prototype.prevMonth = function () {
+    if (this.drawing)
+          return;
     // going into the past is not allowed
     if (today.isAfter(this.current, "day")) return;
 
