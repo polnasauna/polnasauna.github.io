@@ -50,7 +50,7 @@
         .then((res) => {
           if (res.status === 201) {
             res.json().then((data) => (window.location.href = "success"));
-          } else if (res.status == 409) {
+          } else if (res.status == 409 || res.status == 422) {
             res.json().then((data) => (alert(data.detail)));
           } else {
             throw new Error("Nastala chyba");
