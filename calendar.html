@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
-        <head>
-        <link href="calendar.css" rel="stylesheet" type="text/css" media="all">
-        </head>
-<body>
-</body>
-<div id="calendar"></div>
-<form id="reservation">
-  <label for="name">Meno:</label><input type="text" id="name" name="name" pattern="\S{3,}" required><br>
-  <label for="email">Email:</label><input type="email" id="email" name="email" required><br>
-  <label for="phone">Tel. číslo:</label><input type="tel" id="phone" name="phone" required><br>
-  <label for="termin">Termín:</label><input type="text" id="termin" name="termin" value="" disabled><br>
-  <input type="hidden" id="year" name="year">
-  <input type="hidden" id="month" name="month">
-  <input type="hidden" id="day" name="day">
-  <input type="hidden" id="hour" name="hour">
-  <input type="submit" value="Odoslať">
-</form>
+  <head>
+    <title>polnasauna</title>
+    <link href="calendar.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+  <body></body>
+  <div id="calendar"></div>
+  <form id="reservation">
+    <label for="name">Meno:</label
+    ><input type="text" id="name" name="name" pattern="\S{3,}" required /><br />
+    <label for="email">Email:</label
+    ><input type="email" id="email" name="email" required /><br />
+    <label for="phone">Tel. číslo:</label
+    ><input type="tel" id="phone" name="phone" required /><br />
+    <label for="termin">Termín:</label
+    ><input type="text" id="termin" name="termin" value="" disabled /><br />
+    <input type="hidden" id="year" name="year" />
+    <input type="hidden" id="month" name="month" />
+    <input type="hidden" id="day" name="day" />
+    <input type="hidden" id="hour" name="hour" />
+    <input type="submit" value="Odoslať" />
+  </form>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/locale/sk.min.js"></script>
-<script src="calendar.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/locale/sk.min.js"></script>
+  <script src="calendar.js"></script>
 </html>
