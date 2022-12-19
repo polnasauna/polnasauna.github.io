@@ -1,5 +1,8 @@
 "use strict";
 
+// const bannerMessage =
+//   "V zimných mesiacoch nemusí byť prístupová cesta prejazdná osobným autom.  Za pochopenie ďakujeme.";
+
 const toTop = document.querySelector(".to-top");
 
 window.addEventListener("scroll", () => {
@@ -9,3 +12,7 @@ window.addEventListener("scroll", () => {
     toTop.classList.remove("active");
   }
 });
+
+// window.addEventListener("load", () => {
+//   document.getElementById("bannerMessage").innerHTML = bannerMessage;
+// });
