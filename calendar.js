@@ -422,6 +422,9 @@
     const day = elements["day"].value;
     const hour = elements["hour"].value;
 
-    calendar.submitBooking(name, email, phone, year, month, day, hour);
+    if (!hour)
+        alert("Prosím zvoľte si svoj termín v kalendári.");
+    else
+        calendar.submitBooking(name, email, phone, year, month, day, hour);
   });
 })();
