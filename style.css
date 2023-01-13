@@ -128,7 +128,7 @@ a {
 } */
 
 #header-home {
-  background-image: url(/img/IMG-20220420-WA0000.jpg);
+  background-image: url(/img/IMG20221225113701.jpg);
   background-repeat: round;
   background-size: cover;
   height: 630px;
@@ -213,8 +213,9 @@ a {
   line-height: 1.2em;
   text-align: center;
   justify-content: center;
+  margin-top: 2%;
   padding-top: 25px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   /* text-shadow: 3px 3px 3px rgb(80, 36, 36); */
 }
 
