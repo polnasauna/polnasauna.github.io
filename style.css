@@ -205,7 +205,7 @@ a {
 #showcase .showcase-content {
   color: #fff;
   text-align: center;
-  padding-top: 8%;
+  padding-top: 7%;
 }
 
 #showcase .showcase-content h1 {
@@ -222,6 +222,7 @@ a {
 #showcase .showcase-content p {
   padding-bottom: 20px;
   color: #242f4b;
+  text-shadow: 1px 2px 3px #cad5ed;
   line-height: 1.7em;
   font-size: 25px;
   margin-left: 13px;
