@@ -221,12 +221,18 @@ a {
 
 #showcase .showcase-content p {
   padding-bottom: 20px;
-  color: #242f4b;
+  /* color: #242f4b; */
+  color: whitesmoke;
   text-shadow: 1px 10px 10px #cad5ed;
   line-height: 1.7em;
-  font-size: 25px;
+  font-size: 20px;
   margin-left: 13px;
   margin-right: 13px;
+}
+
+#showcase .showcase-content .text-lead {
+  color: #242f4b;
+  font-size: 25px;
 }
 
 #showcase-sauna .showcase-content {
@@ -242,6 +248,24 @@ a {
   color: #614738;
 } */
 
+.oznam {
+  /* background-color: #97847885; */
+  background-color: #1e3c5e85;
+  /* color: #4f3f36; */
+  color: white;
+  border-radius: 5px;
+  font-weight: 550;
+  /* font-size: 1.3rem; */
+  text-align: center;
+  padding: 10px 5px;
+  margin: 5% 5%;
+  line-height: 10px;
+}
+
+.oznam h3 {
+  margin: 10px 0;
+}
+
 #text {
   /* background-color: rgba(245, 245, 220, 0.755); */
   background-color: #dccabf38;
@@ -250,7 +274,7 @@ a {
   font-weight: 550;
   font-size: 1.5rem;
   text-align: center;
-  padding: 40px 20px;
+  padding: 40px 10px;
   margin: 40px 5%;
   line-height: 40px;
 }
