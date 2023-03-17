@@ -241,12 +241,12 @@ a {
   padding-left: 1300px;
 }
 
-/* #showcase-sauna .showcase-content h1 {
+#showcase-sauna .showcase-content h1 {
   font-size: 70px;
   line-height: 1.2em;
   padding-bottom: 40px;
   color: #614738;
-} */
+}
 
 .oznam {
   /* background-color: #97847885; */
@@ -263,9 +263,9 @@ a {
   line-height: 10px;
 }
 
-.oznam h3 {
+/* .oznam h3 {
   margin: 10px 0;
-}
+} */
 
 #text {
   /* background-color: rgba(245, 245, 220, 0.755); */
