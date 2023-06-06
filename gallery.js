@@ -42,8 +42,12 @@ window.addEventListener("keydown", function (event) {
 
 let sliderImg = document.querySelector(".slider-img");
 let images = [
+  "img/IMG20230529152630.jpg",
+  "img/IMG20230529153846.jpg",
   "img/IMG-20220420-WA0000.jpg",
+  "img/IMG20230529153059.jpg",
   "img/IMG-20220420-WA0003.jpg",
+  "img/IMG20230529153910.jpg",
   "img/IMG-20220420-WA0005.jpg",
   "img/IMG-20220420-WA0006.jpg",
   "img/IMG-20220420-WA0009.jpg",

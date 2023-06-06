@@ -128,7 +128,8 @@ a {
 } */
 
 #header-home {
-  background-image: url(/img/IMG20221225113701.jpg);
+  /* background-image: url(/img/IMG20221225113701.jpg); */
+  background-image: url(/img/IMG20230529152655.jpg);
   background-repeat: round;
   background-size: cover;
   height: 630px;
@@ -223,7 +224,8 @@ a {
   padding-bottom: 20px;
   /* color: #242f4b; */
   color: whitesmoke;
-  text-shadow: 1px 10px 10px #cad5ed;
+  /* text-shadow: 1px 10px 10px #cad5ed; */
+  text-shadow: 1px 2px 2px #15130f;
   line-height: 1.7em;
   font-size: 20px;
   margin-left: 13px;
@@ -231,7 +233,7 @@ a {
 }
 
 #showcase .showcase-content .text-lead {
-  color: #242f4b;
+  color: whitesmoke;
   font-size: 25px;
 }
 
