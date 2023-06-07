@@ -136,7 +136,8 @@ a {
 }
 
 #header-home-contact {
-  background-image: url(/img/IMG-20220420-WA0006.jpg);
+  /* background-image: url(/img/IMG-20220420-WA0006.jpg); */
+  background-image: url(/img/IMG20230529153059.jpg);
   background-repeat: round;
   background-size: cover;
   height: 630px;
@@ -150,7 +151,8 @@ a {
   }*/
 
 #header-home-reservation {
-  background-image: url(/img/IMG-20220420-WA0010.jpg);
+  /* background-image: url(/img/IMG-20220420-WA0010.jpg); */
+  background-image: url(/img/IMG20230529152630.jpg);
   background-repeat: round;
   background-size: cover;
   height: 630px;
