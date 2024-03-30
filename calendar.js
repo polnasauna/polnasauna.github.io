@@ -37,7 +37,7 @@
       name: name,
       email: email,
       phone: phone,
-      date: `${year}-${month}-${day}`,
+      date: `${year}-${month}-${day}`.padStart(2, "0"),
       hour: hour,
     };
     const options = {
