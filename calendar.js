@@ -35,11 +35,15 @@
     // post body data
     const paddedMonth = month.padStart(2, "0");
     const paddedDay = day.padStart(2, "0");
+    
+    var date = new Date(year, month - 1, day);
+    var formattedDate = date.toISOString().slice(0,10);
+
     const booking = {
       name: name,
       email: email,
       phone: phone,
-      date: `${year}-${paddedMonth}-${paddedDay}`,
+      date: formattedDate,
       hour: hour,
     };
     const options = {
