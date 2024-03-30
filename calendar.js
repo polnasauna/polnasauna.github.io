@@ -33,9 +33,6 @@
     let url = `${this.api}/booking`;
 
     // post body data
-    const paddedMonth = month.padStart(2, "0");
-    const paddedDay = day.padStart(2, "0");
-    
     var date = new Date(year, month - 1, day);
     var formattedDate = date.toISOString().slice(0,10);
 
@@ -57,7 +54,7 @@
           if (res.status === 201) {
             res.json().then((data) => (window.location.href = "success"));
           } else if (res.status == 409 || res.status == 422) {
-            res.json().then((data) => (alert(data.detail)));
+            res.json().then((data) => (alert(data.detail[0].msg)));
           } else {
             throw new Error("Nastala chyba");
           }
