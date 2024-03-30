@@ -33,11 +33,13 @@
     let url = `${this.api}/booking`;
 
     // post body data
+    const paddedMonth = month.padStart(2, "0");
+    const paddedDay = day.padStart(2, "0");
     const booking = {
       name: name,
       email: email,
       phone: phone,
-      date: `${year}-${month}-${day}`.padStart(2, "0"),
+      date: `${year}-${paddedMonth}-${paddedDay}`,
       hour: hour,
     };
     const options = {
