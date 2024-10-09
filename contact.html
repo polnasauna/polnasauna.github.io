@@ -81,36 +81,24 @@
     <main id="contact-main">
       <div class="container-contact">
         <h2>Kontaktujte nás</h2>
-        <form
-          action="https://formsubmit.co/info@polnasauna.sk"
-          method="POST"
-          id="form-section"
-        >
-          <input
-            type="hidden"
-            name="_next"
-            value="https://polnasauna.sk/thanks"
-          />
+        <form action="https://formsubmit.co/info@polnasauna.sk" method="POST" id="form-section">
+          <input type="hidden" name="_next" value="https://polnasauna.sk/thanks"/>
           <input type="hidden" name="_url" value="https://polnasauna.sk/contact">
           <div class="wrapper">
             <div class="box">
-              <input type="text" name="fname" id="fname" required />
-              <label for="fname">Meno</label>
-            </div>
-            <div class="box">
-              <input type="text" name="lname" id="lname" required />
-              <label for="lname">Priezvisko</label>
+              <input type="text" name="name" id="name" required />
+              <label for="lname">Meno a Priezvisko</label>
             </div>
           </div>
 
           <div class="wrapper">
             <div class="box">
               <input type="email" name="email" id="email" required />
-              <label for="email">Email</label>
+              <label for="email">E-mail</label>
             </div>
             <div class="box">
               <input type="text" name="tel" id="tel" required />
-              <label for="tel">Mobil</label>
+              <label for="tel">Tel. číslo</label>
             </div>
           </div>
 
@@ -121,7 +109,7 @@
             </div>
           </div>
 
-          <input type="submit" name="" value="Odoslať" />
+          <button type="submit">Odoslať</button>
         </form>
       </div>
     </main>
