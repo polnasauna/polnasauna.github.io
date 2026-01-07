@@ -1,25 +1,44 @@
-!async function() {
-  let api = "https://booking.polnasauna.sk"
+(async function () {
+  const api = "https://booking.polnasauna.sk";
 
-  const urlSearchParams = new URLSearchParams(window.location.search);
-  const params = Object.fromEntries(urlSearchParams.entries());
-  code = params.code;
+  const params = Object.fromEntries(
+    new URLSearchParams(window.location.search).entries()
+  );
+
+  const code = params.code;
+  const msg = document.getElementById("message");
+  const modal = document.getElementById("cancelModal");
 
   if (!code) {
-    alert("Invalid code");
+    msg.innerHTML = "Neplatný kód rezervácie.";
     return;
   }
 
-  let url = `${api}/cancel/${code}`;
-  const api_call = await fetch(url, { method: 'POST' })
+  // Show modal
+  modal.classList.remove("hidden");
 
-  var msg = document.getElementById('message');
+  document.getElementById("cancelCancel").onclick = () => {
+    modal.classList.add("hidden");
+    msg.innerHTML = "Zrušenie rezervácie bolo prerušené.";
+  };
 
-  if (api_call.status == "404") {
-      msg.innerHTML = "Rezervácia nenájdená";
-  } else if (api_call.status == "200") {
-      msg.innerHTML = "Rezervácia zrušená";
-  } else {
-      msg.innerHTML = "Chyba: Rezerváciu sa nepodarilo zrušiť, kontaktujte prosím správcu.";
-  }
- }();
+  document.getElementById("confirmCancel").onclick = async () => {
+    modal.classList.add("hidden");
+
+    try {
+      const response = await fetch(`${api}/cancel/${code}`, {
+        method: "POST",
+      });
+
+      if (response.status === 200) {
+        msg.innerHTML = "Rezervácia bola úspešne zrušená.";
+      } else if (response.status === 404) {
+        msg.innerHTML = "Rezervácia nenájdená.";
+      } else {
+        msg.innerHTML = "Chyba: Rezerváciu sa nepodarilo zrušiť, kontaktujte prosím správcu.";
+      }
+    } catch (err) {
+      msg.innerHTML = "Chyba pripojenia: Rezerváciu sa nepodarilo zrušiť.";
+    }
+  };
+})();

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POĽNÁ SAUNA</title>
     <link rel="icon" href="/img/icons8-log-cabin-16.png" />
-    <link href="calendar.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="cancel.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="menu.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,7 +43,6 @@
         </div>
       </div>
     </div>
-    <!-- Header -->
     <header id="header-home-success">
       <div class="container">
         <nav id="main-nav">
@@ -63,11 +62,6 @@
             </li>
           </ul>
         </nav>
-        <!-- <div id="showcase">
-          <div class="showcase-content">
-            <div id="message" class="text-secondary"></div>
-          </div>
-        </div> -->
       </div>
     </header>
     <div class="heading-success">
@@ -75,8 +69,19 @@
     </div>
 
     <footer id="footer">
-      <p class="copy">Copyright © 2024 - Poľná sauna Nová Ľubovňa</p>
+      <p class="copy">Copyright © 2025 - Poľná sauna Nová Ľubovňa</p>
     </footer>
+    <!-- Cancel confirmation modal -->
+    <div id="cancelModal" class="modal">
+      <div class="modal-content">
+        <h2>Poľná sauna</h2>
+        <p>Naozaj chcete zrušiť vašu rezerváciu?</p>
+        <div class="modal-actions">
+          <button id="confirmCancel" class="btn-danger">Áno, zrušiť</button>
+          <button id="cancelCancel" class="btn-secondary">Nie</button>
+        </div>
+      </div>
+    </div>
     <script src="cancel.js"></script>
     <script src="script.js"></script>
   </body>
