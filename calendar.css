@@ -346,6 +346,9 @@ body {
 .entry.slot17:after, .entry.slot18:after, .entry.slot19:after, .entry.slot20:after {
   background: #53543b;
 }
+.entry.slot21:after, .entry.slot22:after, .entry.slot23:after, .entry.slot24:after {
+  background: #193e84;
+}
 
 /* reservation part */
 

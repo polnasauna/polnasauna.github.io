@@ -21,15 +21,7 @@
       });
   };
 
-  Calendar.prototype.submitBooking = function (
-    name,
-    email,
-    phone,
-    year,
-    month,
-    day,
-    hour
-  ) {
+  Calendar.prototype.submitBooking = function (name, email, phone, year, month, day, hour) {
     let url = `${this.api}/booking`;
 
     // post body data
@@ -293,7 +285,6 @@
       legend.style.opacity = 0;
     }
 
-    // experiment
     details.dataset.dayNumber = dayNumber;
     // RAS
     if (daySlots.length > 0) this.renderSlots(daySlots, day, details);
