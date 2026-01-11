@@ -18,6 +18,7 @@
       .then((res) => res.json())
       .catch((error) => {
         console.error("Chyba:", error);
+        alert("Rezervácia dočasne nedostupná, skúste neskôr.");
       });
   };
 
