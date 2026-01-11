@@ -196,6 +196,10 @@ body {
   background: #af7b67;;
   border-radius: 2px;
 }
+.slot21, .slot22, .slot23, .slot24 {
+  background: #1a1a2e;;
+  border-radius: 2px;
+}
 
 .details {
   position: relative;
@@ -356,7 +360,7 @@ body {
   color: black;
 }
 
-#term {
+#term,#price {
   color: black;
 }
 

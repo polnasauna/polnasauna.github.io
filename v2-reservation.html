@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POĽNÁ SAUNA</title>
     <link rel="icon" href="/img/icons8-log-cabin-16.png" />
-    <link href="calendar.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="v2-calendar.css" type="text/css" media="all" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="menu.css" />
     <link rel="stylesheet" href="v2-form.css" />
-    <link rel="stylesheet" href="calendar.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -97,7 +96,14 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required /><br />
         <label for="phone">Tel. číslo:</label>
-        <input type="tel" id="phone" name="phone" required /><br /><br />
+        <input type="tel" id="phone" name="phone" required /><br />
+
+        <label><input type="checkbox" id="applyDiscount" />Uplatniť zľavu</label><br />
+        <div id="discount-wrapper" style="display: none;">
+          <label for="discount">Zľavový kód:</label>
+          <input type="text" id="discount" name="discount" />
+        </div><br />
+
         <input type="checkbox" id="suhlas" required />
         <label for="suhlas">Súhlasím s <a href="v2-podmienky.pdf" target="_blank" class="inline-link">podmienkami</a> využívania poľnej sauny</label><br />
         <input type="hidden" id="year" name="year" />
@@ -116,5 +122,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/locale/sk.min.js"></script>
     <script src="v2-calendar.js"></script>
+    <script>
+      const checkbox = document.getElementById("applyDiscount");
+      const discountWrapper = document.getElementById("discount-wrapper");
+      checkbox.addEventListener("change", () => {
+        discountWrapper.style.display = checkbox.checked ? "block" : "none";
+        if (!checkbox.checked) {
+          document.getElementById("discount").value = "";
+        }
+      });
+    </script>
   </body>
 </html>

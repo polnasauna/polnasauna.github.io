@@ -1,6 +1,12 @@
 !(function () {
   var today = moment();
 
+  function slotLabel(hour, price) {
+    var ret = (hour == 22) ? "22:00 - 07:00" : `${hour}:00`;
+    if (price) ret += ` (${price}€)`;
+    return ret;
+  }
+
   function Calendar(selector, slotCallback) {
     this.el = document.querySelector(selector);
     this.api = "https://booking.polnasauna.sk";
@@ -21,7 +27,7 @@
       });
   };
 
-  Calendar.prototype.submitBooking = function (name, email, phone, year, month, day, hour) {
+  Calendar.prototype.submitBooking = function (name, email, address, birthdate, phone, year, month, day, hour, discount) {
     let url = `${this.api}/v2-booking`;
 
     // post body data
@@ -31,9 +37,12 @@
     const booking = {
       name: name,
       email: email,
+      address: address,
+      birthdate: birthdate,
       phone: phone,
       date: `${year}-${paddedMonth}-${paddedDay}`,
       hour: hour,
+      // discount: discount,
     };
     const options = {
       method: "POST",
@@ -194,14 +203,14 @@
 
     var name = createElement("div", "day-name", day.format("ddd"));
     var number = createElement("div", "day-number", day.format("DD"));
-    var slots = createElement("div", "day-slots");
+    var slots_div = createElement("div", "day-slots");
 
-    this.drawSlots(day, daySlots, slots);
+    this.drawSlots(day, daySlots, slots_div);
 
     outer.appendChild(name);
     outer.appendChild(number);
 
-    outer.appendChild(slots);
+    outer.appendChild(slots_div);
     this.week.appendChild(outer);
   };
 
@@ -213,8 +222,8 @@
     if (day.isBefore(today, "day")) return;
 
     // console.log(daySlots);
-    daySlots.forEach(function (slot) {
-      var slotSpan = createElement("span", "slot" + slot);
+    daySlots.forEach(function ([hour, price]) {
+      var slotSpan = createElement("span", "slot" + hour);
       element.appendChild(slotSpan);
     });
   };
@@ -272,10 +281,7 @@
         currentOpened.className = "details out";
       }
 
-      //Create the Details Container
-      details = createElement("div", "details in");
-
-      //Create the arrow
+      var details = createElement("div", "details in");
       var arrow = createElement("div", "arrow");
 
       //Create the event wrapper
@@ -301,16 +307,13 @@
       "events in" + (currentWrapper ? " new" : "")
     );
 
-    daySlots.forEach(function (slot) {
+    daySlots.forEach(function ([hour,price]) {
       var div = createElement("div", "event");
       div.addEventListener("click", function () {
-        self.slotCallback(date.year(), date.month() + 1, date.date(), slot);
+        self.slotCallback(date.year(), date.month() + 1, date.date(), hour, price);
       });
-      var square = createElement("div", "event-category " + "slot" + slot);
-      // FIXME
-      let label = (slot === 19) ? "22:00 - 07:00" : `${slot}:00`;
-      var span = createElement("span", "", label);
-      // var span = createElement("span", "", `${slot}:00`);
+      var square = createElement("div", "event-category " + "slot" + hour);
+      var span = createElement("span", "", slotLabel(hour, price));
 
       div.appendChild(square);
       div.appendChild(span);
@@ -334,17 +337,16 @@
   Calendar.prototype.drawLegend = function (slots) {
     var legend = createElement("div", "legend");
 
-    var timeSlots = [...new Set(slots.flat())].sort(function(a, b){return a - b});
-    // console.log(timeSlots);
+    const timeSlots = [...new Set(
+      slots.flatMap(inner => inner.map(item => item[0]))
+    )].sort((a, b) => a - b);
+    console.log(timeSlots);
 
     timeSlots.forEach(function (slot) {
-      // console.log(slot);
       // var text = createElement("span", "entry " + "slot" + slot, `${slot}:00`);
       var div = createElement("div", "event");
       var text = createElement("div", "event-category " + "slot" + slot);
-      let label = (slot === 19) ? "22:00 - 07:00" : `${slot}:00`;
-      var span = createElement("span", "", label);
-      // var span = createElement("span", "", `${slot}:00`);
+      var span = createElement("span", "", slotLabel(slot));
       legend.appendChild(text);
       legend.appendChild(span);
       legend.appendChild(div);
@@ -391,15 +393,15 @@
 })();
 
 !(function () {
-  onSlotSelect = function (year, month, day, hour) {
+  onSlotSelect = function (year, month, day, hour, price) {
     obj = document.forms["reservation"];
     obj.elements["year"].value = year;
     obj.elements["month"].value = month;
     obj.elements["day"].value = day;
     obj.elements["hour"].value = hour;
 
-    let term = document.getElementById("term");
-    term.innerHTML = `${day}.${month}.${year} ${hour}:00h`;
+    document.getElementById("term").innerHTML = `${day}.${month}.${year} ${hour}:00h`;
+    document.getElementById("price").innerHTML = `${price} €`;
 
     var reservation = document.getElementById("reservation");
     reservation.scrollIntoView();
@@ -413,16 +415,19 @@
     const elements = form.elements;
 
     const name = elements["name"].value;
+    const address = elements["address"].value;
+    const birthdate = elements["birthdate"].value;
     const email = elements["email"].value;
     const phone = elements["phone"].value;
     const year = elements["year"].value;
     const month = elements["month"].value;
     const day = elements["day"].value;
     const hour = elements["hour"].value;
+    const discount = elements["discount"].value;
 
     if (!hour)
         alert("Prosím zvoľte si svoj termín v kalendári.");
     else
-        calendar.submitBooking(name, email, phone, year, month, day, hour);
+        calendar.submitBooking(name, email, address, birthdate, phone, year, month, day, hour, discount);
   });
 })();
