@@ -410,20 +410,6 @@
       hour: hour.value,
       // discount: discount,
     };
-    // calendar.submitBooking(booking)
-    //   .then((res) => {
-    //     if (res.status === 201) {
-    //       res.json().then((data) => (window.location.href = "success"));
-    //     } else if (res.status == 409 || res.status == 422) {
-    //       res.json().then((data) => (alert(data.detail[0].msg || data.detail)));
-    //     } else {
-    //       throw new Error("Nastala chyba");
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     alert(error);
-    //   })
-
     try {
       const res = await calendar.submitBooking(booking);
       const data = await res.json();
