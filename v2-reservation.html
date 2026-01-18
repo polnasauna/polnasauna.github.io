@@ -19,18 +19,6 @@
     <script src="https://kit.fontawesome.com/13dba11563.js" crossorigin="anonymous" ></script>
     <script src="https://gw.sandbox.gopay.com/gp-gw/js/embed.js"></script>
     <!-- <script src="https://gate.gopay.cz/gp-gw/js/embed.js"></script> -->
-    <script src="script.js"></script>
-    <script src="v2-calendar.js"></script>
-    <script>
-      const checkbox = document.getElementById("applyDiscount");
-      const discountWrapper = document.getElementById("discount-wrapper");
-      checkbox.addEventListener("change", () => {
-        discountWrapper.style.display = checkbox.checked ? "block" : "none";
-        if (!checkbox.checked) {
-          document.getElementById("discount").value = "";
-        }
-      });
-    </script>
   </head>
   <body>
     <!-- mobile menu -->
@@ -125,5 +113,18 @@
     <footer id="footer">
       <p class="copy">Copyright © 2025 - Poľná Sauna Nová Ľubovňa</p>
     </footer>
+    <!-- FIXME: MOVE TO TOP -->
+    <script src="script.js"></script>
+    <script src="v2-calendar.js"></script>
+    <script>
+      const checkbox = document.getElementById("applyDiscount");
+      const discountWrapper = document.getElementById("discount-wrapper");
+      checkbox.addEventListener("change", () => {
+        discountWrapper.style.display = checkbox.checked ? "block" : "none";
+        if (!checkbox.checked) {
+          document.getElementById("discount").value = "";
+        }
+      });
+    </script>
   </body>
 </html>
