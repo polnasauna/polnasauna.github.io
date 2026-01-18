@@ -395,7 +395,7 @@
       discount_code,
     } = form.elements;
 
-    if (!hour) {
+    if (!hour.value) {
       alert("Prosím zvoľte si svoj termín v kalendári.");
       return;
     }

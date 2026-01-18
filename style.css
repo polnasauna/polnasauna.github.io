@@ -102,11 +102,18 @@ a {
   /* font-size: 25px; */
 }
 
+#header-home,
+#header-home-contact,
+#header-home-reservation,
+#header-home-sauna,
+#success {
+  background-repeat: round;
+  background-size: cover;
+}
+
 #header-home {
   /* background-image: url(/img/IMG20221225113701.jpg);*/
   background-image: url(/img/IMG20230529152655.jpg);
-  background-repeat: round;
-  background-size: cover;
   height: 630px;
 }
 
@@ -114,30 +121,22 @@ a {
   background-image: url(/img/IMG-20220420-WA0006.jpg);
   /* background-image: url(/img/IMG20230529153059.jpg); */
   /* background-image: url(/img/IMG20221225113701.jpg); */
-  background-repeat: round;
-  background-size: cover;
   height: 630px;
 }
 
 #header-home-reservation {
   /* background-image: url(/img/IMG-20220420-WA0010.jpg); */
   background-image: url(/img/IMG20230529152630.jpg);
-  background-repeat: round;
-  background-size: cover;
   height: 630px;
 }
 
 #header-home-sauna {
   background-image: url(/img/IMG-20220726-WA0003.jpg);
-  background-repeat: round;
-  background-size: cover;
   height: 550px;
 }
 
 #success {
   background-image: url(/img/IMG20230529152655.jpg);
-  background-repeat: round;
-  background-size: cover;
   width: 100vw;
   height: 100vh;
 }
