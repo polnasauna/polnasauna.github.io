@@ -380,44 +380,63 @@
 
   const form = document.getElementById("reservation");
 
-  form.addEventListener("submit", async (ev) {
+  form.addEventListener("submit", async (ev) => {
     ev.preventDefault();
-    const elements = form.elements;
-
-    const year = elements["year"].value;
-    const month = elements["month"].value;
-    const day = elements["day"].value;
-    const discount = elements["discount"].value;
+    const {
+      name,
+      email,
+      address,
+      birthdate,
+      phone,
+      year,
+      month,
+      day,
+      hour,
+      discount_code,
+    } = form.elements;
 
     if (!hour) {
       alert("Prosím zvoľte si svoj termín v kalendári.");
       return;
     }
 
-    const date = `${year.value}-${month.value.padStart(2, "0")}-${day.value.padStart(2, "0")}`;
-
     const booking = {
-      name: elements["name"].value,
-      email: elements["email"].value,
-      address: elements["address"].value,
-      birthdate: elements["birthdate"].value,
-      phone: elements["phone"].value,
-      date: date,
-      hour: elements["hour"].value,
+      name: name.value,
+      email: email.value,
+      address: address.value,
+      birthdate: birthdate.value,
+      phone: phone.value,
+      date: `${year.value}-${month.value.padStart(2, "0")}-${day.value.padStart(2, "0")}`,
+      hour: hour.value,
       // discount: discount,
     };
-    calendar.submitBooking(booking)
-      .then((res) => {
-        if (res.status === 201) {
-          res.json().then((data) => (window.location.href = "success"));
-        } else if (res.status == 409 || res.status == 422) {
-          res.json().then((data) => (alert(data.detail[0].msg || data.detail)));
-        } else {
-          throw new Error("Nastala chyba");
-        }
-      })
-      .catch((error) => {
-        alert(error);
-      })
+    // calendar.submitBooking(booking)
+    //   .then((res) => {
+    //     if (res.status === 201) {
+    //       res.json().then((data) => (window.location.href = "success"));
+    //     } else if (res.status == 409 || res.status == 422) {
+    //       res.json().then((data) => (alert(data.detail[0].msg || data.detail)));
+    //     } else {
+    //       throw new Error("Nastala chyba");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     alert(error);
+    //   })
+
+    try {
+      const res = await calendar.submitBooking(booking);
+      const data = await res.json();
+
+      if (res.status === 201) {
+        window.location.href = "success";
+      } else if (res.status === 409 || res.status === 422) {
+        alert(data.detail?.[0]?.msg || data.detail);
+      } else {
+        throw new Error("Nastala chyba");
+      }
+    } catch (err) {
+      alert(err.message || err);
+    }
   });
 })();
