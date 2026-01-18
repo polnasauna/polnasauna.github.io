@@ -27,43 +27,12 @@
       });
   };
 
-  Calendar.prototype.submitBooking = function (name, email, address, birthdate, phone, year, month, day, hour, discount) {
-    let url = `${this.api}/v2-booking`;
-
-    // post body data
-    var paddedMonth = month.toString().padStart(2, '0');
-    var paddedDay = day.toString().padStart(2, '0');
-
-    const booking = {
-      name: name,
-      email: email,
-      address: address,
-      birthdate: birthdate,
-      phone: phone,
-      date: `${year}-${paddedMonth}-${paddedDay}`,
-      hour: hour,
-      // discount: discount,
-    };
-    const options = {
+  Calendar.prototype.submitBooking = function (booking) {
+    return fetch(`${this.api}/v2-booking`, {
       method: "POST",
-      body: JSON.stringify(booking),
       headers: { "Content-Type": "application/json" },
-    };
-    return (
-      fetch(url, options)
-        .then((res) => {
-          if (res.status === 201) {
-            res.json().then((data) => (window.location.href = "success"));
-          } else if (res.status == 409 || res.status == 422) {
-            res.json().then((data) => (alert(data.detail[0].msg || data.detail)));
-          } else {
-            throw new Error("Nastala chyba");
-          }
-        })
-        .catch((error) => {
-          alert(error);
-        })
-    );
+      body: JSON.stringify(booking),
+    });
   };
 
   Calendar.prototype.draw = function () {
@@ -410,24 +379,45 @@
   var calendar = new Calendar("#calendar", onSlotSelect);
 
   const form = document.getElementById("reservation");
-  form.addEventListener("submit", function (ev) {
+
+  form.addEventListener("submit", async (ev) {
     ev.preventDefault();
     const elements = form.elements;
 
-    const name = elements["name"].value;
-    const address = elements["address"].value;
-    const birthdate = elements["birthdate"].value;
-    const email = elements["email"].value;
-    const phone = elements["phone"].value;
     const year = elements["year"].value;
     const month = elements["month"].value;
     const day = elements["day"].value;
-    const hour = elements["hour"].value;
     const discount = elements["discount"].value;
 
-    if (!hour)
-        alert("Prosím zvoľte si svoj termín v kalendári.");
-    else
-        calendar.submitBooking(name, email, address, birthdate, phone, year, month, day, hour, discount);
+    if (!hour) {
+      alert("Prosím zvoľte si svoj termín v kalendári.");
+      return;
+    }
+
+    const date = `${year.value}-${month.value.padStart(2, "0")}-${day.value.padStart(2, "0")}`;
+
+    const booking = {
+      name: elements["name"].value,
+      email: elements["email"].value,
+      address: elements["address"].value,
+      birthdate: elements["birthdate"].value,
+      phone: elements["phone"].value,
+      date: date,
+      hour: elements["hour"].value,
+      // discount: discount,
+    };
+    calendar.submitBooking(booking)
+      .then((res) => {
+        if (res.status === 201) {
+          res.json().then((data) => (window.location.href = "success"));
+        } else if (res.status == 409 || res.status == 422) {
+          res.json().then((data) => (alert(data.detail[0].msg || data.detail)));
+        } else {
+          throw new Error("Nastala chyba");
+        }
+      })
+      .catch((error) => {
+        alert(error);
+      })
   });
 })();

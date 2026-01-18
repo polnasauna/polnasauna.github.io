@@ -12,18 +12,25 @@
     <link rel="stylesheet" href="v2-form.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/13dba11563.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/locale/sk.min.js"></script>
+    <script src="https://kit.fontawesome.com/13dba11563.js" crossorigin="anonymous" ></script>
+    <script src="https://gw.sandbox.gopay.com/gp-gw/js/embed.js"></script>
+    <!-- <script src="https://gate.gopay.cz/gp-gw/js/embed.js"></script> -->
+    <script src="script.js"></script>
+    <script src="v2-calendar.js"></script>
+    <script>
+      const checkbox = document.getElementById("applyDiscount");
+      const discountWrapper = document.getElementById("discount-wrapper");
+      checkbox.addEventListener("change", () => {
+        discountWrapper.style.display = checkbox.checked ? "block" : "none";
+        if (!checkbox.checked) {
+          document.getElementById("discount").value = "";
+        }
+      });
+    </script>
   </head>
   <body>
     <!-- mobile menu -->
@@ -110,7 +117,7 @@
         <input type="hidden" id="month" name="month" />
         <input type="hidden" id="day" name="day" />
         <input type="hidden" id="hour" name="hour" />
-        <input type="submit" value="Rezervovať" class="re-button" />
+        <input type="submit" value="Zaplatiť" class="re-button" />
       </form>
     </div>
 
@@ -118,19 +125,5 @@
     <footer id="footer">
       <p class="copy">Copyright © 2025 - Poľná Sauna Nová Ľubovňa</p>
     </footer>
-    <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/locale/sk.min.js"></script>
-    <script src="v2-calendar.js"></script>
-    <script>
-      const checkbox = document.getElementById("applyDiscount");
-      const discountWrapper = document.getElementById("discount-wrapper");
-      checkbox.addEventListener("change", () => {
-        discountWrapper.style.display = checkbox.checked ? "block" : "none";
-        if (!checkbox.checked) {
-          document.getElementById("discount").value = "";
-        }
-      });
-    </script>
   </body>
 </html>
