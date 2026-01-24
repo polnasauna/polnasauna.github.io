@@ -366,7 +366,7 @@
 
 !(function () {
   onSlotSelect = function (year, month, day, hour, price) {
-    obj = document.forms["reservation"];
+    obj = document.forms["payment-form"];
     obj.elements["year"].value = year;
     obj.elements["month"].value = month;
     obj.elements["day"].value = day;
@@ -376,13 +376,13 @@
     document.getElementById("term").innerHTML = `${day}.${month}.${year} ${_hour}`;
     document.getElementById("price").innerHTML = `${price} €`;
 
-    var reservation = document.getElementById("reservation");
-    reservation.scrollIntoView();
+    var paymentForm = document.getElementById("payment-form");
+    paymentForm.scrollIntoView();
   };
 
   var calendar = new Calendar("#calendar", onSlotSelect);
 
-  const form = document.getElementById("reservation");
+  const form = document.getElementById("payment-form");
 
   form.addEventListener("submit", async (ev) => {
     ev.preventDefault();
@@ -453,7 +453,7 @@
 })();
 
 window.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('reservation');
+  const form = document.getElementById('payment-form');
   const hiddenInputs = form.querySelectorAll('input[type="hidden"]');
   hiddenInputs.forEach(input => input.value = '');
 });

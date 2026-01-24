@@ -7,7 +7,7 @@
   /* grid-template-rows: 1fr; */
 }
 
-#reservation {
+#payment-form {
   /* display: grid; */
   margin: 5% auto 0 auto;
   background-color: #83706238;
@@ -48,7 +48,7 @@
   opacity: 0.7;
 }
 
-#reservation input {
+#payment-form input {
   font-size: larger;
   padding: 6px;
   border-radius: 4px;
@@ -67,12 +67,8 @@
 }
 
 /* #reservation input, */
-#reservation label {
+#payment-form label {
   width: 100%;
-}
-
-.p-reservation {
-  color: #332d28;
 }
 
 @media (max-width: 646px) {
@@ -82,7 +78,7 @@
 }
 
 @media (max-width: 540px) {
-  #reservation {
+  #payment-form {
     width: 100%;
   }
 }
