@@ -380,6 +380,14 @@
   const form = document.getElementById("reservation");
 
   form.addEventListener("submit", async (ev) => {
+    const form = ev.target;
+    if (!form.checkValidity()) {
+      ev.preventDefault();
+      const firstInvalid = form.querySelector(':invalid');
+      firstInvalid.focus();
+      alert(firstInvalid.validationMessage || "Please fill out this field correctly.");
+      return;
+    }
     ev.preventDefault();
     const {
       name,
