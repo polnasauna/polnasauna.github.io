@@ -396,7 +396,11 @@
 
     const errorsDiv = document.getElementById('form_errors');
     const errors = [];
-    if (!hour.value) errors.push("Prosím zvoľte si svoj termín v kalendári");
+    if (!hour.value) {
+        // errors.push("Prosím zvoľte si svoj termín v kalendári");
+        showToast("Nastala hodina chyba");
+    }
+
     if (!name.value.trim()) errors.push('Meno je povinné');
     if (!email.value.trim()) errors.push('Email je povinný');
     if (!address.value.trim()) errors.push('Adresa je povinná');

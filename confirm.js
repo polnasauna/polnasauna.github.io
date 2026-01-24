@@ -6,6 +6,7 @@
   code = params.code;
 
   if (!code) {
+    // FIXME toast
     alert("Invalid code");
     return;
   }
