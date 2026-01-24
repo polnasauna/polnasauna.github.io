@@ -394,14 +394,23 @@
       discount_code,
     } = form.elements;
 
-    var errors = document.getElementById('errors');
-    if (!hour.value) { errors.push("Prosím zvoľte si svoj termín v kalendári.");
-    if (!name.value) { errors.push('Meno je povinné');
-    if (!email.value) { errors.push('Email je povinný');
-    if (!address.value) { errors.push('Adresa je povinná');
-    if (!birthdate.value) { errors.push('Dátum narodenia je povinný');
-    if (!phone.value) { errors.push('Tel. číslo je povinné');
-    error.innerHTML = errors.join('<br>');
+    const errorsDiv = document.getElementById('errors');
+    const errors = [];
+    if (!hour.value) errors.push("Prosím zvoľte si svoj termín v kalendári.");
+    if (!name.value) errors.push('Meno je povinné');
+    if (!email.value) errors.push('Email je povinný');
+    if (!address.value) errors.push('Adresa je povinná');
+    if (!birthdate.value) errors.push('Dátum narodenia je povinný');
+    if (!phone.value) errors.push('Tel. číslo je povinné');
+
+    if (errors.length > 0) {
+      errorsDiv.innerHTML = errors.join('<br>');
+      errorsDiv.style.display = 'block';
+      return;
+    } else {
+      errorsDiv.innerHTML = '';
+      errorsDiv.style.display = 'none';
+    }
 
     const booking = {
       name: name.value,
@@ -421,12 +430,12 @@
         // window.location.href = "success";
         _gopay.checkout({gatewayUrl: data.gw_url, inline: true});
       } else if (res.status === 409 || res.status === 422) {
-        alert(data.detail?.[0]?.msg || data.detail);
+        throw new Error(data.detail?.[0]?.msg || data.detail);
       } else {
         throw new Error("Nastala chyba");
       }
     } catch (err) {
-      alert(err.message || err);
+      throw new Error(err.message || err);
     }
   });
 })();
