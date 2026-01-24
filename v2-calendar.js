@@ -444,7 +444,7 @@
       } else if (res.status === 409 || res.status === 422) {
         showToast(data.detail?.[0]?.msg || data.detail, 5000);
       } else {
-        showToast("Nastala chyba", 5000);
+        showToast("Nastala neočakávaná chyba, skúste prosím neskôr.", 5000);
       }
     } catch (err) {
       showToast(err.message || err, 5000);
