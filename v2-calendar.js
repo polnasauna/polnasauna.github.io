@@ -22,8 +22,8 @@
 
     return fetch(url)
       .then((res) => res.json())
-      .catch((error) => {
-        throw new Error(`Chyba: ${error.message}`);
+      .catch((err) => {
+        showToast(err.message || 'Nastala chyba');
       });
   };
 
@@ -437,12 +437,12 @@
         // window.location.href = "success";
         _gopay.checkout({gatewayUrl: data.gw_url, inline: true});
       } else if (res.status === 409 || res.status === 422) {
-        throw new Error(data.detail?.[0]?.msg || data.detail);
+        showToast(data.detail?.[0]?.msg || data.detail);
       } else {
-        throw new Error("Nastala chyba");
+        showToast("Nastala chyba");
       }
     } catch (err) {
-      throw new Error(err.message || err);
+      showToast(err.message || err);
     }
   });
 })();
