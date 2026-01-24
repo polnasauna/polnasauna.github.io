@@ -21,9 +21,14 @@
     let url = `${this.api}/v2-bookings/${year}/${month}`;
 
     return fetch(url)
-      .then((res) => res.json())
-      .catch((err) => {
-        showToast(err.message || 'Nastala chyba');
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Chyba: ${res.status} ${res.statusText}`);
+        }
+        return res.json(); // status 200–299
+      })
+      .catch(err => {
+        showToast("Ľutujeme, z technických príčin je rezervácia dočasne nedostupná. Skúste prosím neskôr.")
       });
   };
 

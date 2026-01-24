@@ -18,16 +18,18 @@ function showToast(msg) {
   Object.assign(toast.style, {
     position: 'fixed',
     bottom: '20px',
-    left: '50%',
-    transform: 'translateX(-50%)',
+    left: '0',
+    right: '0',
+    margin: '0 auto',
+    maxWidth: '90%',
     background: 'red',
     color: 'white',
     padding: '10px 20px',
     borderRadius: '5px',
-    zIndex: 1000,
+    zIndex: 9999,
     fontSize: '14px',
     opacity: '0.9'
   });
   document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 5000);
+  setTimeout(() => toast.remove(), 15000);
 }
