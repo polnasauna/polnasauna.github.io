@@ -380,14 +380,6 @@
   const form = document.getElementById("reservation");
 
   form.addEventListener("submit", async (ev) => {
-    const form = ev.target;
-    if (!form.checkValidity()) {
-      ev.preventDefault();
-      const firstInvalid = form.querySelector(':invalid');
-      firstInvalid.focus();
-      alert(firstInvalid.validationMessage || "Please fill out this field correctly.");
-      return;
-    }
     ev.preventDefault();
     const {
       name,
@@ -402,10 +394,14 @@
       discount_code,
     } = form.elements;
 
-    if (!hour.value) {
-      alert("Prosím zvoľte si svoj termín v kalendári.");
-      return;
-    }
+    var errors = document.getElementById('errors');
+    if (!hour.value) { errors.push("Prosím zvoľte si svoj termín v kalendári.");
+    if (!name.value) { errors.push('Meno je povinné');
+    if (!email.value) { errors.push('Email je povinný');
+    if (!address.value) { errors.push('Adresa je povinná');
+    if (!birthdate.value) { errors.push('Dátum narodenia je povinný');
+    if (!phone.value) { errors.push('Tel. číslo je povinné');
+    error.innerHTML = errors.join('<br>');
 
     const booking = {
       name: name.value,
