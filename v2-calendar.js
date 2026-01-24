@@ -280,7 +280,8 @@
         self.slotCallback(date.year(), date.month() + 1, date.date(), hour, price);
       });
       var square = createElement("div", "event-category " + "slot" + hour);
-      var span = createElement("span", "", slotLabel(hour, price));
+      // var span = createElement("span", "", slotLabel(hour, price));
+      var span = createElement("span", "", `${hour}:00 (${price}€)`);
 
       div.appendChild(square);
       div.appendChild(span);
@@ -310,11 +311,11 @@
     ).values()].sort((a, b) => a[0] - b[0]);
 
     timeSlots.forEach(function ([hour, price]) {
-      var div = createElement("div", "event");
+      var div = createElement("div", "event-slot");
       var text = createElement("div", "event-category " + "slot" + hour);
       var span = createElement("span", "", slotLabel(hour, price));
-      legend.appendChild(text);
-      legend.appendChild(span);
+      div.appendChild(text);
+      div.appendChild(span);
       legend.appendChild(div);
     });
     return legend;
@@ -366,7 +367,8 @@
     obj.elements["day"].value = day;
     obj.elements["hour"].value = hour;
 
-    document.getElementById("term").innerHTML = `${day}.${month}.${year} ${hour}:00h`;
+    var _hour = (hour == 22) ? "22:00 - 07:00" : `${hour}:00`;
+    document.getElementById("term").innerHTML = `${day}.${month}.${year} ${_hour}`;
     document.getElementById("price").innerHTML = `${price} €`;
 
     var reservation = document.getElementById("reservation");

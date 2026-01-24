@@ -297,11 +297,12 @@ body {
   height: 14px;
   width: 14px;
   border-radius: 4px;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
-.event span {
-  display: inline-block;
-  padding: 0 0 0 7px;
+.event-slot {
+    display: flex;
 }
 
 .legend {
@@ -567,7 +568,10 @@ body {
   .slot17,
   .slot18,
   .slot19,
-  .slot20 {
+  .slot21,
+  .slot22,
+  .slot23,
+  .slot24 {
     height: 14px;
     width: 14px;
   }
@@ -593,7 +597,11 @@ body {
   .slot17,
   .slot18,
   .slot19,
-  .slot20 {
+  .slot20,
+  .slot21,
+  .slot22,
+  .slot23,
+  .slot24 {
     height: 6px;
     width: 6px;
   }
