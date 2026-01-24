@@ -391,12 +391,14 @@
       month,
       day,
       hour,
+      suhlas,
       discount_code,
     } = form.elements;
 
     const errorsDiv = document.getElementById('errors');
     const errors = [];
-    if (!hour.value) errors.push("Prosím zvoľte si svoj termín v kalendári.");
+    if (!suhlas.value) errors.push('Potvrďte súhlas s podmienkami');
+    if (!hour.value) errors.push("Prosím zvoľte si svoj termín v kalendári");
     if (!name.value.trim()) errors.push('Meno je povinné');
     if (!email.value.trim()) errors.push('Email je povinný');
     if (!address.value.trim()) errors.push('Adresa je povinná');
