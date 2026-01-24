@@ -23,7 +23,7 @@
     return fetch(url)
       .then((res) => res.json())
       .catch((error) => {
-        console.error("Chyba:", error);
+        throw new Error(`Chyba: ${error.message}`);
       });
   };
 
