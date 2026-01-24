@@ -646,8 +646,15 @@ body {
   }
 }
 
-
 #form_errors {
+  display: none;
   color: red;
   text-align: center;
+  border: 1px solid red;
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+#form_errors ul {
+  list-style-position: inside;
 }

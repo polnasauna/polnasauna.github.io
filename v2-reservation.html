@@ -105,14 +105,14 @@
         <input type="hidden" id="month" name="month" />
         <input type="hidden" id="day" name="day" />
         <input type="hidden" id="hour" name="hour" />
-        <div id="form_errors"</div>
-        <input type="submit" value="Objednať a Zaplatiť" class="re-button" />
+        <div id="form_errors"></div>
+        <input type="submit" value="Objednať a Zaplatiť" id="submit-form" class="re-button" disabled=/>
       </form>
     </div>
 
     <a class="to-top" href="#"><i class="fa-solid fa-arrow-up"></i></a>
     <footer id="footer">
-      <p class="copy">Copyright © 2025 - Poľná Sauna Nová Ľubovňa</p>
+      <p class="copy">Copyright © 2026 - Poľná Sauna Nová Ľubovňa</p>
     </footer>
     <script src="script.js"></script>
     <script src="v2-calendar.js"></script>
@@ -122,9 +122,12 @@
       checkbox.addEventListener("change", () => {
         discountWrapper.style.display = checkbox.checked ? "block" : "none";
         if (!checkbox.checked) {
-          document.getElementById("discount").value = "";
+          document.getElementById("discount_code").value = "";
         }
       });
+      const suhlas = document.getElementById("suhlas");
+      const submit_btn = document.getElementById("submit-form");
+      suhlas.addEventListener("change", () => { submit_btn.disabled = !suhlas.checked; });
     </script>
   </body>
 </html>

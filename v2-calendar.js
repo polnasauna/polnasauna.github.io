@@ -391,13 +391,11 @@
       month,
       day,
       hour,
-      suhlas,
       discount_code,
     } = form.elements;
 
-    const errorsDiv = document.getElementById('errors');
+    const errorsDiv = document.getElementById('form_errors');
     const errors = [];
-    if (!suhlas.value) errors.push('Potvrďte súhlas s podmienkami');
     if (!hour.value) errors.push("Prosím zvoľte si svoj termín v kalendári");
     if (!name.value.trim()) errors.push('Meno je povinné');
     if (!email.value.trim()) errors.push('Email je povinný');
@@ -406,7 +404,14 @@
     if (!phone.value.trim()) errors.push('Tel. číslo je povinné');
 
     if (errors.length > 0) {
-      errorsDiv.innerHTML = errors.join('<br>');
+      errorsDiv.innerHTML = '';
+      const ul = document.createElement('ul');
+      errors.forEach(err => {
+        const li = document.createElement('li');
+        li.textContent = err;
+        ul.appendChild(li);
+      });
+      errorsDiv.appendChild(ul);
       errorsDiv.style.display = 'block';
       return;
     } else {
@@ -441,3 +446,9 @@
     }
   });
 })();
+
+window.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('reservation');
+  const hiddenInputs = form.querySelectorAll('input[type="hidden"]');
+  hiddenInputs.forEach(input => input.value = '');
+});

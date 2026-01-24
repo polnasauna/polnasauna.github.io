@@ -1,0 +1,32 @@
+
+<!-- V tělě html dokumentu -->
+<form action="/create-payment" method="post" id="payment-form">
+<!-- Obsah checkout formuláře -->
+  <button type="submit">Zaplatit</button>
+</form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // přidání listeneru k checkout formuláři
+    const paymentForm = document.querySelector("#payment-form");
+    paymentForm.addEventListener("submit", async (event) => {
+      // zabránění výchozí akci, která by způsobila refresh stránky
+      event.preventDefault();
+      // serializace dat z formuláře do formátu JSON
+      const formData = new FormData(paymentForm);
+      const formObject = Object.fromEntries(formData.entries());
+      // asynchronní založení platby na serveru
+      const response = await fetch(paymentForm.action, {
+        method: paymentForm.method,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(formObject)
+      });
+      // zpracování odpovědi a vyvolání inline platební brány
+      const result = await response.json();
+      _gopay.checkout({gatewayUrl: result.gw_url, inline: true});
+    })
+  })
+</script>
