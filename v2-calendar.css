@@ -293,16 +293,18 @@ body {
   color: #eee;
 }
 
+.event-slot {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
 .event-category {
   height: 14px;
   width: 14px;
   border-radius: 4px;
   margin-right: 4px;
   margin-left: 4px;
-}
-
-.event-slot {
-    display: flex;
 }
 
 .legend {
