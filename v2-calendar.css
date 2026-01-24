@@ -163,7 +163,7 @@ body {
   list-style: none;
   margin-top: 3px;
   text-align: center;
-  height: 12px;
+  /* height: 12px; */
   line-height: 6px;
   overflow: hidden;
 }
@@ -204,9 +204,9 @@ body {
 .details {
   position: relative;
   width: 100%;
-  height: 40px;
+  /* height: 40px; */
   background: #7b7069bd;
-  margin-top: 5px;
+  margin: 5px;
   border-radius: 4px;
   display: inline-block;
 }
@@ -227,7 +227,7 @@ body {
   position: absolute;
   top: -5px;
   left: 50%;
-  margin-left: -2px;
+  margin-left: -10px;
   width: 0px;
   height: 0px;
   border-style: solid;
@@ -272,13 +272,17 @@ body {
 }
 
 .event {
+  display: flex;
+  flex-direction: column;
   font-size: 16px;
   line-height: 22px;
   letter-spacing: 0.5px;
   padding: 2px 16px;
   vertical-align: top;
   cursor: pointer;
-  display: inline-block;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
 }
 
 .event:hover {
@@ -292,9 +296,7 @@ body {
 .event-category {
   height: 14px;
   width: 14px;
-  display: inline-block;
-  margin: 0 0 0;
-  vertical-align: middle;
+  border-radius: 4px;
 }
 
 .event span {
@@ -303,19 +305,25 @@ body {
 }
 
 .legend {
-//  position: absolute;
   margin-top: 20px;
   padding: 7px 10px;
   display: flex;
   justify-content: space-evenly;
-  bottom: 10px;
+  align-items: center;
   width: 100%;
-  //background: #7b7069;
+  bottom: 10px;
   color: #7b7069;
   border-top: solid 1px #b3aead;
-  align-items: center;
-
   transition: 0.5s all ease-in-out;
+
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 600px) {
+  .legend {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 .entry {

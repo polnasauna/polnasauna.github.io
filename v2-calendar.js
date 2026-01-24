@@ -253,8 +253,6 @@
       var details = createElement("div", "details in");
       var arrow = createElement("div", "arrow");
 
-      //Create the event wrapper
-
       details.appendChild(arrow);
       el.parentNode.appendChild(details);
       legend.style.opacity = 0;
@@ -306,16 +304,15 @@
   Calendar.prototype.drawLegend = function (slots) {
     var legend = createElement("div", "legend");
 
-    const timeSlots = [...new Set(
-      slots.flatMap(inner => inner.map(item => item[0]))
-    )].sort((a, b) => a - b);
-    console.log(timeSlots);
+    const timeSlots = [...new Map(slots
+        .flatMap(inner => inner)
+        .map(item => [item[0], item])
+    ).values()].sort((a, b) => a[0] - b[0]);
 
-    timeSlots.forEach(function (slot) {
-      // var text = createElement("span", "entry " + "slot" + slot, `${slot}:00`);
+    timeSlots.forEach(function ([hour, price]) {
       var div = createElement("div", "event");
-      var text = createElement("div", "event-category " + "slot" + slot);
-      var span = createElement("span", "", slotLabel(slot));
+      var text = createElement("div", "event-category " + "slot" + hour);
+      var span = createElement("span", "", slotLabel(hour, price));
       legend.appendChild(text);
       legend.appendChild(span);
       legend.appendChild(div);

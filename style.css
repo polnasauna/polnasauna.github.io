@@ -112,31 +112,31 @@ a {
 }
 
 #header-home {
-  /* background-image: url(/img/IMG20221225113701.jpg);*/
-  background-image: url(/img/IMG20230529152655.jpg);
+  /* background-image: url(img/IMG20221225113701.jpg);*/
+  background-image: url(img/IMG20230529152655.jpg);
   height: 630px;
 }
 
 #header-home-contact {
-  background-image: url(/img/IMG-20220420-WA0006.jpg);
-  /* background-image: url(/img/IMG20230529153059.jpg); */
-  /* background-image: url(/img/IMG20221225113701.jpg); */
+  background-image: url(img/IMG-20220420-WA0006.jpg);
+  /* background-image: url(img/IMG20230529153059.jpg); */
+  /* background-image: url(img/IMG20221225113701.jpg); */
   height: 630px;
 }
 
 #header-home-reservation {
-  /* background-image: url(/img/IMG-20220420-WA0010.jpg); */
-  background-image: url(/img/IMG20230529152630.jpg);
+  /* background-image: url(img/IMG-20220420-WA0010.jpg); */
+  background-image: url(img/IMG20230529152630.jpg);
   height: 630px;
 }
 
 #header-home-sauna {
-  background-image: url(/img/IMG-20220726-WA0003.jpg);
+  background-image: url(img/IMG-20220726-WA0003.jpg);
   height: 550px;
 }
 
 #success {
-  background-image: url(/img/IMG20230529152655.jpg);
+  background-image: url(img/IMG20230529152655.jpg);
   width: 100vw;
   height: 100vh;
 }
@@ -372,12 +372,6 @@ a {
   font-size: 18px;
   border-radius: 2px;
 }
-
-/* @media (max-width: 768px) {
-  .img10 {
-    display: none;
-  }
-} */
 
 @media (max-width: 768px) {
   #gallery .pop-img .btn-prev {
@@ -669,7 +663,7 @@ a {
   }
 
   #header-home-reservation {
-    height: 350px;
+    height: 50px;
     background-repeat: no-repeat;
   }
 
