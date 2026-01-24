@@ -25,10 +25,10 @@
         if (!res.ok) {
           throw new Error(`Chyba: ${res.status} ${res.statusText}`);
         }
-        return res.json(); // status 200–299
+        return res.json();
       })
       .catch(err => {
-        showToast("Ľutujeme, z technických príčin je rezervácia dočasne nedostupná. Skúste prosím neskôr.")
+        showToast("Ľutujeme, z technických príčin je rezervácia dočasne nedostupná. Skúste prosím neskôr.", 15000)
       });
   };
 
@@ -401,15 +401,11 @@
 
     const errorsDiv = document.getElementById('form_errors');
     const errors = [];
-    if (!hour.value) {
-        // errors.push("Prosím zvoľte si svoj termín v kalendári");
-        showToast("Nastala hodina chyba");
-    }
-
+    if (!hour.value) errors.push("Prosím zvoľte si svoj termín v kalendári");
     if (!name.value.trim()) errors.push('Meno je povinné');
-    if (!email.value.trim()) errors.push('Email je povinný');
     if (!address.value.trim()) errors.push('Adresa je povinná');
     if (!birthdate.value) errors.push('Dátum narodenia je povinný');
+    if (!email.value.trim()) errors.push('Email je povinný');
     if (!phone.value.trim()) errors.push('Tel. číslo je povinné');
 
     if (errors.length > 0) {
@@ -446,12 +442,12 @@
         // window.location.href = "success";
         _gopay.checkout({gatewayUrl: data.gw_url, inline: true});
       } else if (res.status === 409 || res.status === 422) {
-        showToast(data.detail?.[0]?.msg || data.detail);
+        showToast(data.detail?.[0]?.msg || data.detail, 5000);
       } else {
-        showToast("Nastala chyba");
+        showToast("Nastala chyba", 5000);
       }
     } catch (err) {
-      showToast(err.message || err);
+      showToast(err.message || err, 5000);
     }
   });
 })();
