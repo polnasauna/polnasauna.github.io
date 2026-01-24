@@ -397,11 +397,11 @@
     const errorsDiv = document.getElementById('errors');
     const errors = [];
     if (!hour.value) errors.push("Prosím zvoľte si svoj termín v kalendári.");
-    if (!name.value) errors.push('Meno je povinné');
-    if (!email.value) errors.push('Email je povinný');
-    if (!address.value) errors.push('Adresa je povinná');
+    if (!name.value.trim()) errors.push('Meno je povinné');
+    if (!email.value.trim()) errors.push('Email je povinný');
+    if (!address.value.trim()) errors.push('Adresa je povinná');
     if (!birthdate.value) errors.push('Dátum narodenia je povinný');
-    if (!phone.value) errors.push('Tel. číslo je povinné');
+    if (!phone.value.trim()) errors.push('Tel. číslo je povinné');
 
     if (errors.length > 0) {
       errorsDiv.innerHTML = errors.join('<br>');

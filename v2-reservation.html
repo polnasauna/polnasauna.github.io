@@ -83,15 +83,15 @@
           <label for="price">Cena:</label> <span id="price"></span><br />
         </div>
         <label for="name">Meno a Priezvisko:</label>
-        <input type="text" id="name" name="name" pattern="\S{3,}.*" required minlength="3"/><br />
+        <input type="text" id="name" name="name" /><br />
         <label for="address">Adresa bydliska:</label>
-        <input type="text" id="address" name="address" autocomplete="street-address" required minlength="3"/><br />
+        <input type="text" id="address" name="address" autocomplete="street-address"/><br />
         <label for="birthdate">Dátum narodenia:</label>
-        <input type="date" id="birthdate" name="birthdate" required /><br />
+        <input type="date" id="birthdate" name="birthdate" /><br />
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required minlength="3"/><br />
+        <input type="email" id="email" name="email" /><br />
         <label for="phone">Tel. číslo:</label>
-        <input type="tel" id="phone" name="phone" required minlength="10"/><br />
+        <input type="tel" id="phone" name="phone" /><br />
 
         <label><input type="checkbox" id="applyDiscount" />Uplatniť zľavu</label><br />
         <div id="discount-wrapper" style="display: none;">
@@ -99,7 +99,7 @@
           <input type="text" id="discount_code" name="discount_code" />
         </div><br />
 
-        <input type="checkbox" id="suhlas" required />
+        <input type="checkbox" id="suhlas" required/>
         <label for="suhlas">Súhlasím s <a href="v2-podmienky.pdf" target="_blank" class="inline-link">podmienkami</a> využívania poľnej sauny</label><br />
         <input type="hidden" id="year" name="year" />
         <input type="hidden" id="month" name="month" />
