@@ -83,15 +83,15 @@
           <label for="price">Cena:</label> <span id="price"></span><br />
         </div>
         <label for="name">Meno a Priezvisko:</label>
-        <input type="text" id="name" name="name" pattern="\S{3,}.*" required /><br />
+        <input type="text" id="name" name="name" pattern="\S{3,}.*" required minlength="3"/><br />
         <label for="address">Adresa bydliska:</label>
-        <input type="text" id="address" name="address" autocomplete="street-address" required /><br />
+        <input type="text" id="address" name="address" autocomplete="street-address" required minlength="3"/><br />
         <label for="birthdate">Dátum narodenia:</label>
         <input type="date" id="birthdate" name="birthdate" required /><br />
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required /><br />
+        <input type="email" id="email" name="email" required minlength="3"/><br />
         <label for="phone">Tel. číslo:</label>
-        <input type="tel" id="phone" name="phone" required /><br />
+        <input type="tel" id="phone" name="phone" required minlength="10"/><br />
 
         <label><input type="checkbox" id="applyDiscount" />Uplatniť zľavu</label><br />
         <div id="discount-wrapper" style="display: none;">
