@@ -367,7 +367,7 @@
     obj.elements["day"].value = day;
     obj.elements["hour"].value = hour;
 
-    var _hour = (hour == 22) ? "22:00 - 07:00" : `${hour}:00`;
+    var _hour = (hour == 22) ? "22:00 - 07:00" : `${hour}:00 - ${hour+3}:00`;
     document.getElementById("term").innerHTML = `${day}.${month}.${year} ${_hour}`;
     document.getElementById("price").innerHTML = `${price} €`;
 
