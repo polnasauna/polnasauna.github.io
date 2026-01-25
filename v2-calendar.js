@@ -442,6 +442,7 @@
         // window.location.href = "success";
         // _gopay.checkout({gatewayUrl: data.gw_url, inline: true}, function(checkoutResult) { alert(checkoutResult);});
 
+
           try {
             // Jako druhý parametr je předána callback funkce, která je volána při zavření brány
             _gopay.checkout({ gatewayUrl: data.gw_url, inline: true }, async (checkoutResult) => {
