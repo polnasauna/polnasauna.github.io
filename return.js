@@ -6,11 +6,12 @@
   id = params.id;
 
   if (!id) {
+    // FIXME: showAlert
     alert("Invalid payment ID");
     return;
   }
 
-  let url = `${api}/return/${id}`;
+  let url = `${api}/payment/return/${id}`;
   const api_call = await fetch(url, {});
 
   var msg = document.getElementById("message");
