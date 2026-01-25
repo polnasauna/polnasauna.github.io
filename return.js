@@ -2,23 +2,33 @@
   let api = "https://booking.polnasauna.sk";
 
   const urlSearchParams = new URLSearchParams(window.location.search);
-  const params = Object.fromEntries(urlSearchParams.entries());
-  id = params.id;
+  const id = urlSearchParams.get("id");
+  const msg = document.getElementById("message");
 
   if (!id) {
-    // FIXME: showAlert
-    alert("Invalid payment ID");
+    msg.textContent = "Neplatné ID platby.";
     return;
   }
 
-  let url = `${api}/payment/return/${id}`;
-  const api_call = await fetch(url, {});
+  try {
+    const response = await fetch(`${api}/payment/${id}`);
 
-  var msg = document.getElementById("message");
+    if (response.status === 404) {
+      msg.textContent = "Rezervácia nebola nájdená.";
+      return;
+    }
 
-  if (api_call.status == "404") {
-    msg.innerHTML = "Rezervácia nenájdená";
-  } else {
-    msg.innerHTML = "Rezervácia úspešná";
+    if (!response.ok) {
+      msg.textContent = "Chyba pri overovaní platby. Skúste neskôr.";
+      return;
+    }
+
+    const data = await response.json();
+
+    msg.textContent = data.message;
+
+  } catch (err) {
+    console.error(err);
+    msg.textContent = "Nepodarilo sa spojiť so serverom.";
   }
 })();
