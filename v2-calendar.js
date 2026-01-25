@@ -440,7 +440,23 @@
 
       if (res.status === 201) {
         // window.location.href = "success";
-        _gopay.checkout({gatewayUrl: data.gw_url, inline: true}, function(checkoutResult) { alert(checkoutResult);});
+        // _gopay.checkout({gatewayUrl: data.gw_url, inline: true}, function(checkoutResult) { alert(checkoutResult);});
+
+          try {
+            // Jako druhý parametr je předána callback funkce, která je volána při zavření brány
+            _gopay.checkout({ gatewayUrl: data.gw_url, inline: true }, async (checkoutResult) => {
+              // V objektu checkoutResult se nachází návratová URL, ID platby a její stav
+              console.log(`Stav platby ${checkoutResult.id}: ${checkoutResult.state}`);
+              // Pro další informace o platbě je možné zavolat dotaz na stav platby.
+              const paymentStatusResult = await getPaymentStatus(checkoutResult.id);
+              // A následně odpověď libovolně zpracovat
+              console.log(paymentStatusResult);
+            });
+          } catch (err) {
+            console.error(err);
+          }
+
+
       } else if (res.status === 409 || res.status === 422) {
         showToast(data.detail?.[0]?.msg || data.detail, 5000);
       } else {
