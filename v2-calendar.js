@@ -440,7 +440,7 @@
 
       if (res.status === 201) {
         // window.location.href = "success";
-        _gopay.checkout({gatewayUrl: data.gw_url, inline: true});
+        _gopay.checkout({gatewayUrl: data.gw_url, inline: true}, function(checkoutResult) { alert(checkoutResult);});
       } else if (res.status === 409 || res.status === 422) {
         showToast(data.detail?.[0]?.msg || data.detail, 5000);
       } else {
