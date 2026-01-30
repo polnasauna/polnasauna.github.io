@@ -9,6 +9,11 @@
     return;
   }
 
+  if (id == "free") {
+    msg.textContent = "Rezervácia je potvrdená."
+    return;
+  }
+
   const MAX_ATTEMPTS = 10;
   const INTERVAL = 5000;
   let attempts = 0;

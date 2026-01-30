@@ -439,6 +439,10 @@
       const data = await res.json();
 
       if (res.status === 201) {
+        if (data.is_free) {
+            window.location.href = "/return?id=free";
+            return;
+        }
         // window.location.href = "success";
         // _gopay.checkout({gatewayUrl: data.gw_url, inline: true}, function(checkoutResult) { alert(checkoutResult);});
 
