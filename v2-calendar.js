@@ -432,7 +432,7 @@
       phone: phone.value,
       date: `${year.value}-${month.value.padStart(2, "0")}-${day.value.padStart(2, "0")}`,
       hour: hour.value,
-      // discount: discount,
+      discount_code: discount_code.value,
     };
     try {
       const res = await calendar.submitBooking(booking);
@@ -441,7 +441,6 @@
       if (res.status === 201) {
         // window.location.href = "success";
         // _gopay.checkout({gatewayUrl: data.gw_url, inline: true}, function(checkoutResult) { alert(checkoutResult);});
-
 
           try {
             // Jako druhý parametr je předána callback funkce, která je volána při zavření brány
