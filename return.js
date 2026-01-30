@@ -9,8 +9,8 @@
     return;
   }
 
-  const MAX_ATTEMPTS = 20;      // stop after ~1 minute (20 × 3s)
-  const INTERVAL = 3000;        // 3 seconds
+  const MAX_ATTEMPTS = 10;
+  const INTERVAL = 5000;
   let attempts = 0;
 
   async function checkPayment() {
@@ -34,7 +34,7 @@
         attempts++;
 
         if (attempts >= MAX_ATTEMPTS) {
-          msg.textContent = "Platba sa stále spracúva. Obnovte stránku o chvíľu.";
+          msg.textContent = "Platba sa stále spracováva. Obnovte stránku o chvíľu.";
           return;
         }
 
