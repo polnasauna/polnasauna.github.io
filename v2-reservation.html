@@ -116,18 +116,5 @@
     </footer>
     <script src="script.js"></script>
     <script src="v2-calendar.js"></script>
-    <script>
-      const checkbox = document.getElementById("applyDiscount");
-      const discountWrapper = document.getElementById("discount-wrapper");
-      checkbox.addEventListener("change", () => {
-        discountWrapper.style.display = checkbox.checked ? "block" : "none";
-        if (!checkbox.checked) {
-          document.getElementById("discount_code").value = "";
-        }
-      });
-      const suhlas = document.getElementById("suhlas");
-      const submit_btn = document.getElementById("submit-form");
-      suhlas.addEventListener("change", () => { submit_btn.disabled = !suhlas.checked; });
-    </script>
   </body>
 </html>

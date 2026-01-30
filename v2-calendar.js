@@ -476,4 +476,20 @@ window.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('payment-form');
   const hiddenInputs = form.querySelectorAll('input[type="hidden"]');
   hiddenInputs.forEach(input => input.value = '');
+
+  const checkbox = document.getElementById("applyDiscount");
+  checkbox.checked = false;
+  document.getElementById("discount_code").value = "";
+
+  const discountWrapper = document.getElementById("discount-wrapper");
+  checkbox.addEventListener("change", () => {
+    discountWrapper.style.display = checkbox.checked ? "block" : "none";
+    if (!checkbox.checked) {
+      document.getElementById("discount_code").value = "";
+    }
+  });
+  const suhlas = document.getElementById("suhlas");
+  const submit_btn = document.getElementById("submit-form");
+  suhlas.addEventListener("change", () => { submit_btn.disabled = !suhlas.checked; });
+
 });
