@@ -10,6 +10,7 @@
   function Calendar(selector, slotCallback) {
     this.el = document.querySelector(selector);
     this.api = "https://booking.polnasauna.sk";
+    // this.api = "http://localhost:8000";
     this.current = moment().date(1);
     this.slotCallback = slotCallback;
     this.draw();
@@ -470,22 +471,66 @@
       showToast(err.message || err, 5000);
     }
   });
+
+  const discountInput = document.getElementById('discount_code');
+  // Function to check discount code
+  async function checkDiscount(code) {
+    if (!code) {
+      discountInput.style.borderColor = '';
+      discountInput.style.backgroundColor = '';
+      return;
+    }
+    const form = document.getElementById("payment-form");
+    const email = form.elements.email.value;
+
+    try {
+      // Replace this URL with your API endpoint
+      const response = await fetch(`${calendar.api}/validate-discount?code=${encodeURIComponent(code)}&email=${encodeURIComponent(email)}`);
+      const data = await response.json();
+
+      if (data.valid) {
+        discountInput.style.borderColor = 'green';
+        discountInput.style.backgroundColor = '#e6f8e6';
+      } else {
+        discountInput.style.borderColor = 'red';
+        discountInput.style.backgroundColor = '#ffe6e6';
+      }
+    } catch (err) {
+      console.error('Error checking discount code:', err);
+      discountInput.style.borderColor = 'red';
+      discountInput.style.backgroundColor = '#ffe6e6';
+    }
+  }
+  // Debounce function to avoid firing API on every keystroke
+  function debounce(func, delay) {
+    let timeout;
+    return function(...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+  }
+
+  // Attach debounced input listener
+  discountInput.addEventListener('input', debounce((e) => {
+    checkDiscount(e.target.value.trim());
+  }, 500)); // 500ms delay
 })();
 
 window.addEventListener('DOMContentLoaded', () => {
+  const discountInput = document.getElementById('discount_code');
   const form = document.getElementById('payment-form');
   const hiddenInputs = form.querySelectorAll('input[type="hidden"]');
   hiddenInputs.forEach(input => input.value = '');
 
   const checkbox = document.getElementById("applyDiscount");
   checkbox.checked = false;
-  document.getElementById("discount_code").value = "";
+  discountInput.value = "";
 
   const discountWrapper = document.getElementById("discount-wrapper");
   checkbox.addEventListener("change", () => {
     discountWrapper.style.display = checkbox.checked ? "block" : "none";
     if (!checkbox.checked) {
-      document.getElementById("discount_code").value = "";
+      discountInput.value = "";
     }
   });
   const suhlas = document.getElementById("suhlas");
