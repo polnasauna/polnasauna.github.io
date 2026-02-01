@@ -391,7 +391,6 @@
       name,
       email,
       address,
-      birthdate,
       phone,
       year,
       month,
@@ -405,7 +404,6 @@
     if (!hour.value) errors.push("Prosím zvoľte si svoj termín v kalendári");
     if (!name.value.trim()) errors.push('Meno je povinné');
     if (!address.value.trim()) errors.push('Adresa je povinná');
-    if (!birthdate.value) errors.push('Dátum narodenia je povinný');
     if (!email.value.trim()) errors.push('Email je povinný');
     if (!phone.value.trim()) errors.push('Tel. číslo je povinné');
 
@@ -429,7 +427,6 @@
       name: name.value,
       email: email.value,
       address: address.value,
-      birthdate: birthdate.value,
       phone: phone.value,
       date: `${year.value}-${month.value.padStart(2, "0")}-${day.value.padStart(2, "0")}`,
       hour: hour.value,
