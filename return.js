@@ -36,7 +36,7 @@
       msg.textContent = data.message;
 
       if (data.gw_url) {
-          msg.textContent = `Platba neprešla. Pre opätovné zaplatenie kliknite <a href="${data.gw_url}">tu</a>. Pre zrušenie platby kliknitu <a href="cancel?code=">tu</a>.`;
+          msg.textContent = `Platba neprešla. Pre opätovné zaplatenie kliknite <a href="${data.gw_url}">tu</a>. Pre zrušenie platby kliknitu <a href="cancel?code=${data.booking_id}">tu</a>.`;
       }
       else if (data.pending === true) {
         attempts++;
