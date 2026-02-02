@@ -35,7 +35,7 @@
       const data = await response.json();
 
       if (data.gw_url) {
-          msg.innerHTML = `Platba neúspešná. <a href="${data.gw_url}">Opakovať platbu</a> alebo <a href="cancel?code=${data.booking_id}">zrušiť rezerváciu</a>.`;
+          msg.innerHTML = `Platba neúspešná.<br><a href="${data.gw_url}">Opakovať platbu</a> alebo <a href="cancel?code=${data.booking_id}">zrušiť rezerváciu</a>.`;
           return;
       }
       else if (data.pending === true) {
