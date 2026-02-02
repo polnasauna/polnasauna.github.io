@@ -33,12 +33,13 @@
       }
 
       const data = await response.json();
-      msg.textContent = data.message;
 
       if (data.gw_url) {
-          msg.innerHTML = `Platba neprešla. Pre opätovné zaplatenie <a href="${data.gw_url}">kliknite tu</a>. Pre zrušenie platby <a href="cancel?code=${data.booking_id}">kliknite tu</a>.`;
+          msg.innerHTML = `Platba neprešla. Chcete <a href="${data.gw_url}">Opakovať</a> alebo <a href="cancel?code=${data.booking_id}">Zrušiť platbu</a>.`;
+          return;
       }
       else if (data.pending === true) {
+        msg.textContent = data.message;
         attempts++;
 
         if (attempts >= MAX_ATTEMPTS) {
