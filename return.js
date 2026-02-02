@@ -39,7 +39,7 @@
         attempts++;
 
         if (attempts >= MAX_ATTEMPTS) {
-          msg.textContent = "Platba sa stále spracováva. Obnovte stránku o chvíľu.";
+          msg.textContent = "Platba sa stále spracováva. Obnovte stránku o neskór.";
           return;
         }
 
