@@ -445,15 +445,7 @@
         // _gopay.checkout({gatewayUrl: data.gw_url, inline: true}, function(checkoutResult) { alert(checkoutResult);});
 
           try {
-            // Jako druhý parametr je předána callback funkce, která je volána při zavření brány
-            _gopay.checkout({ gatewayUrl: data.gw_url, inline: true }, async (checkoutResult) => {
-              // V objektu checkoutResult se nachází návratová URL, ID platby a její stav
-              console.log(`Stav platby ${checkoutResult.id}: ${checkoutResult.state}`);
-              // Pro další informace o platbě je možné zavolat dotaz na stav platby.
-              const paymentStatusResult = await getPaymentStatus(checkoutResult.id);
-              // A následně odpověď libovolně zpracovat
-              console.log(paymentStatusResult);
-            });
+            _gopay.checkout({ gatewayUrl: data.gw_url, inline: true });
           } catch (err) {
             console.error(err);
           }

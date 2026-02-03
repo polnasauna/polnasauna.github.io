@@ -19,6 +19,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/locale/sk.min.js"></script>
     <script src="https://kit.fontawesome.com/13dba11563.js" crossorigin="anonymous" ></script>
+    <meta http-equiv="Content-Security-Policy"
+          content="
+          default-src 'self';
+          script-src 'self' 'unsafe-inline' https://gw.sandbox.gopay.com https://gate.gopay.cz https://*.gopay.com https://*.gopay.cz;
+          frame-src https://gw.sandbox.gopay.com https://gate.gopay.cz https://*.gopay.com https://*.gopay.cz;
+          connect-src 'self' https://booking.polnasauna.sk https://gw.sandbox.gopay.com https://gate.gopay.cz https://*.gopay.com https://*.gopay.cz;
+          img-src 'self' data: https:;
+          style-src 'self' 'unsafe-inline' https:;
+          font-src 'self' https: data:;
+    ">
   </head>
   <body>
     <!-- mobile menu -->
