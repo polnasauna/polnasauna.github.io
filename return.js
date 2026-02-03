@@ -38,12 +38,13 @@
           msg.innerHTML = `Platba neúspešná.<br><a href="${data.gw_url}">Opakovať platbu</a> alebo <a href="cancel?code=${data.booking_id}">zrušiť rezerváciu</a>.`;
           return;
       }
-      else if (data.pending === true) {
+      msg.textContent = data.message;
+      if (data.pending === true) {
         msg.textContent = data.message;
         attempts++;
 
         if (attempts >= MAX_ATTEMPTS) {
-          msg.textContent = "Platba sa stále spracováva. Prosím obnovte stránku neskór.";
+          msg.textContent = "Platba sa spracováva. Prosím obnovte stránku neskór.";
           return;
         }
 
