@@ -746,3 +746,29 @@ a {
   opacity: 0.95;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
+
+#action-buttons {
+  display: none;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+#btn-repeat {
+  background: green;
+  color: white;
+}
+
+#btn-repeat:hover {
+  background: #46b021;
+}
+
+#btn-cancel {
+  background: #b91c1c;
+  color: white;
+}
+
+#btn-cancel:hover {
+  background: #e82929;
+}
