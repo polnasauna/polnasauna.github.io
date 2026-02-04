@@ -161,7 +161,7 @@ a {
   color: white;
   background-color: #665344;
   border-radius: 3px;
-  padding: 10px 15px;
+  padding: 10px 10px;
   cursor: pointer;
   border: none;
   box-shadow: 3px 3px 3px rgb(67, 55, 39);
@@ -753,22 +753,4 @@ a {
   display: flex;
   justify-content: center;
   gap: 20px;
-}
-
-#btn-repeat {
-  background: green;
-  color: white;
-}
-
-#btn-repeat:hover {
-  background: #46b021;
-}
-
-#btn-cancel {
-  background: #b91c1c;
-  color: white;
-}
-
-#btn-cancel:hover {
-  background: #e82929;
 }
