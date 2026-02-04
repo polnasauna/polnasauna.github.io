@@ -38,7 +38,7 @@
           msg.innerHTML = "Platba neúspešná."
 
           document.getElementById("btn-repeat").href = data.gw_url;
-          document.getElementById("btn-cancel").href = `cancel?code=${data.booking_id}`;
+          document.getElementById("btn-cancel").href = `cancel?code=${data.booking_id}&skipconfirm=1`;
           document.getElementById("action-buttons").style.display = "flex";
 
           return;

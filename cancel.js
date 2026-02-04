@@ -6,6 +6,7 @@
   );
 
   const code = params.code;
+  const skipconfirm = params.skipconfirm;
   const msg = document.getElementById("message");
   const modal = document.getElementById("cancelModal");
 
@@ -14,17 +15,7 @@
     return;
   }
 
-  // Show modal
-  modal.classList.remove("hidden");
-
-  document.getElementById("cancelCancel").onclick = () => {
-    modal.classList.add("hidden");
-    msg.innerHTML = "Zrušenie rezervácie bolo prerušené.";
-  };
-
-  document.getElementById("confirmCancel").onclick = async () => {
-    modal.classList.add("hidden");
-
+  async function cancelBooking() {
     try {
       const response = await fetch(`${api}/cancel/${code}`, {
         method: "POST",
@@ -40,5 +31,23 @@
     } catch (err) {
       msg.innerHTML = "Chyba pripojenia: Rezerváciu sa nepodarilo zrušiť.";
     }
+  }
+
+  if (skipconfirm) {
+    cancelBooking();
+    return;
+  }
+
+  modal.classList.remove("hidden");
+
+  document.getElementById("cancelCancel").onclick = () => {
+    modal.classList.add("hidden");
+    msg.innerHTML = "Zrušenie rezervácie bolo prerušené.";
   };
+
+  document.getElementById("confirmCancel").onclick = async () => {
+    modal.classList.add("hidden");
+    cancelBooking();
+  };
+
 })();
