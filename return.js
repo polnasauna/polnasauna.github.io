@@ -8,12 +8,12 @@
   actionBtns.style.display = "none";
 
   if (!id) {
-    msg.textContent = "Neplatné ID platby.";
+    msg.textContent = "Neplatný kód platby.";
     return;
   }
 
   if (id == "free") {
-    msg.textContent = "Rezervácia je potvrdená."
+    msg.textContent = "Rezervácia potvrdená."
     return;
   }
 
@@ -61,7 +61,7 @@
 
     } catch (err) {
       console.error(err);
-      msg.textContent = "Nepodarilo sa spojiť so serverom.";
+      msg.textContent = "Nepodarilo sa spojiť so serverom. Skúste neskôr.";
     }
   }
 
