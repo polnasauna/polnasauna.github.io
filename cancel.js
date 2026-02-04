@@ -22,7 +22,7 @@
       });
 
       if (response.status === 200) {
-        msg.innerHTML = "Rezervácia bola úspešne zrušená.";
+        msg.innerHTML = "Rezervácia zrušená.";
       } else if (response.status === 404) {
         msg.innerHTML = "Rezervácia nenájdená.";
       } else {
