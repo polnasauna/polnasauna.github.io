@@ -3,6 +3,9 @@
   const urlSearchParams = new URLSearchParams(window.location.search);
   const id = urlSearchParams.get("id");
   const msg = document.getElementById("message");
+  const actionBtns = document.getElementById("action-buttons");
+
+  actionBtns.style.display = "none";
 
   if (!id) {
     msg.textContent = "Neplatné ID platby.";
@@ -39,7 +42,7 @@
 
           document.getElementById("btn-repeat").href = data.gw_url;
           document.getElementById("btn-cancel").href = `cancel?code=${data.booking_id}&skipconfirm=1`;
-          document.getElementById("action-buttons").style.display = "flex";
+          actionBtns.style.display = "flex";
 
           return;
       }
