@@ -594,13 +594,23 @@ a {
 /* Footer */
 #footer {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 50px;
   background-color: #413b3b;
-  font-weight: 500;
   text-align: center;
   color: white;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+#footer a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  #footer {
+    flex-direction: column;
+  }
 }
 
 /* Main sauna */
@@ -610,8 +620,6 @@ a {
   grid-template-columns: 1fr;
   justify-items: center;
   align-content: center;
-  /* padding-left: 500px;
-  padding-right: 500px; */
   padding-bottom: 40px;
 }
 
@@ -620,7 +628,6 @@ a {
   padding: 40px 0 40px 0;
   font-size: 38px;
   color: #614738;
-  /* text-shadow: 1px 1px 1px #1d140b; */
 }
 
 #main-sauna p {

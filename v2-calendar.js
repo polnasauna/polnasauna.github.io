@@ -465,8 +465,7 @@
   // Function to check discount code
   async function checkDiscount(code) {
     if (!code) {
-      discountInput.style.borderColor = '';
-      discountInput.style.backgroundColor = '';
+      discountInput.className = ""
       return;
     }
     const form = document.getElementById("payment-form");
@@ -478,16 +477,13 @@
       const data = await response.json();
 
       if (data.valid) {
-        discountInput.style.borderColor = 'green';
-        discountInput.style.backgroundColor = '#e6f8e6';
+        discountInput.className = "discount_code_ok"
       } else {
-        discountInput.style.borderColor = 'red';
-        discountInput.style.backgroundColor = '#ffe6e6';
+        discountInput.className = "discount_code_wrong"
       }
     } catch (err) {
       console.error('Error checking discount code:', err);
-      discountInput.style.borderColor = 'red';
-      discountInput.style.backgroundColor = '#ffe6e6';
+      discountInput.className = ""
     }
   }
   // Debounce function to avoid firing API on every keystroke
