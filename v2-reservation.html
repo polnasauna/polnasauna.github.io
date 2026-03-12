@@ -82,6 +82,66 @@
         </div>
       </div>
     </header>
+
+    <!-- ANNOUNCEMENT BANNER -->
+    <div class="announcement-banner">
+      <div class="announcement-title" onclick="toggleAnnouncement()">
+        Dôležitý oznam: Poľná Sauna prechádza na nový rezervačný systém ▼
+      </div>
+
+      <div class="announcement-content" id="announcementContent">
+        <p>Milí saunéri a priaznivci našej sauny,</p>
+        <p>
+          od nášho otvorenia sme fungovali na základe dôvery a dobrovoľného príspevku.
+          Vaša podpora a to, ako radi sa k nám vraciate, nám robí obrovskú radosť.
+          Aby sme však dokázali Poľnú Saunu dlhodobo udržať v rovnakej kvalite,
+          pokrývať bežné opotrebenie a zabezpečiť pre vás vždy dostatok pripraveného
+          dreva, museli sme urobiť dôležitý krok vpred.
+        </p>
+
+        <p><strong>Prechádzame z dobrovoľného príspevku na pevný cenník.</strong></p>
+
+        <p><strong>Čo táto zmena znamená v praxi?</strong></p>
+
+        <ul>
+          <li>
+            <strong>Nová rezervácia a platba:</strong> Svoj termín si po novom jednoducho
+            vyberiete a uhradíte vopred podľa platného cenníka. Vďaka tomu vieme
+            stabilne financovať údržbu celého priestoru.
+          </li>
+
+          <li>
+            <strong>Kúzlo miesta zostáva 100 % zachované:</strong> Zážitok, pre ktorý
+            k nám chodíte, sa vôbec nemení. Stále ide o plne samoobslužnú saunu.
+            Nikto vás nebude rušiť, oheň v piecke si zakladáte vy sami a celá terasa
+            s výhľadom na Tatry, ako aj oddychová zóna s hojdacou sieťou, patria na
+            vyhradený čas výlučne vám.
+          </li>
+        </ul>
+
+        <p>
+          Sme presvedčení, že vďaka tomuto kroku tu pre vás bude Poľná sauna ešte
+          veľmi dlho a v tej najlepšej forme.
+        </p>
+
+        <p>
+          Ďakujeme vám za pochopenie a doterajšiu priazeň.
+          Tešíme sa na vašu najbližšiu návštevu! 🔥🌲
+        </p>
+      </div>
+    </div>
+    <script>
+    function toggleAnnouncement() {
+      const content = document.getElementById("announcementContent");
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    }
+    </script>
+
+
     <h1 id="re-heading">Vyberte si svoj termín</h1>
     <!-- <h3 id="re-subheading">klinutím na dátum a zvolený čas</h3> -->
     <div class="reservation-wrap">

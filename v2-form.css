@@ -81,3 +81,46 @@
     width: 100%;
   }
 }
+
+.announcement-banner {
+  background: #d5c9c038;
+  border-bottom: 2px solid #c9b79c;
+  font-family: sans-serif;
+  color: black;
+}
+
+.announcement-title {
+  padding: 14px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  color: darkred;
+  text-align: center;
+}
+
+.announcement-title:hover {
+  background: #efe7d8;
+}
+
+.announcement-content {
+  display: none;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  line-height: 1.6;
+}
+
+.announcement-content * {
+  font-family: "Inter", sans-serif;
+}
+
+.announcement-content p {
+  margin-bottom: 20px;
+}
+
+.announcement-content ul {
+  margin: 16px 0;
+  padding-left: 20px;
+}
+
+.announcement-content li {
+  margin-bottom: 10px;
+}
