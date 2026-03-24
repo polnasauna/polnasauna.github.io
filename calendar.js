@@ -1,6 +1,12 @@
 !(function () {
   var today = moment();
 
+  function slotLabel(hour, price) {
+    var ret = (hour == 22) ? "22:00 - 07:00" : `${hour}:00`;
+    if (price) ret += ` (${price}€)`;
+    return ret;
+  }
+
   function Calendar(selector, slotCallback) {
     this.el = document.querySelector(selector);
     this.api = "https://booking.polnasauna.sk";
@@ -15,47 +21,23 @@
     let url = `${this.api}/bookings/${year}/${month}`;
 
     return fetch(url)
-      .then((res) => res.json())
-      .catch((error) => {
-        console.error("Chyba:", error);
-        alert("Ľutujeme, z technických príčin je rezervácia dočasne nedostupná. Skúste prosím neskôr.");
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Chyba: ${res.status} ${res.statusText}`);
+        }
+        return res.json();
+      })
+      .catch(err => {
+        showToast("Ľutujeme, z technických príčin je rezervácia dočasne nedostupná. Skúste prosím neskôr.", 15000)
       });
   };
 
-  Calendar.prototype.submitBooking = function (name, email, phone, year, month, day, hour) {
-    let url = `${this.api}/booking`;
-
-    // post body data
-    var paddedMonth = month.toString().padStart(2, '0');
-    var paddedDay = day.toString().padStart(2, '0');
-
-    const booking = {
-      name: name,
-      email: email,
-      phone: phone,
-      date: `${year}-${paddedMonth}-${paddedDay}`,
-      hour: hour,
-    };
-    const options = {
+  Calendar.prototype.submitBooking = function (booking) {
+    return fetch(`${this.api}/booking`, {
       method: "POST",
-      body: JSON.stringify(booking),
       headers: { "Content-Type": "application/json" },
-    };
-    return (
-      fetch(url, options)
-        .then((res) => {
-          if (res.status === 201) {
-            res.json().then((data) => (window.location.href = "success"));
-          } else if (res.status == 409 || res.status == 422) {
-            res.json().then((data) => (alert(data.detail[0].msg || data.detail)));
-          } else {
-            throw new Error("Nastala chyba");
-          }
-        })
-        .catch((error) => {
-          alert(error);
-        })
-    );
+      body: JSON.stringify(booking),
+    });
   };
 
   Calendar.prototype.draw = function () {
@@ -195,14 +177,14 @@
 
     var name = createElement("div", "day-name", day.format("ddd"));
     var number = createElement("div", "day-number", day.format("DD"));
-    var slots = createElement("div", "day-slots");
+    var slots_div = createElement("div", "day-slots");
 
-    this.drawSlots(day, daySlots, slots);
+    this.drawSlots(day, daySlots, slots_div);
 
     outer.appendChild(name);
     outer.appendChild(number);
 
-    outer.appendChild(slots);
+    outer.appendChild(slots_div);
     this.week.appendChild(outer);
   };
 
@@ -214,8 +196,8 @@
     if (day.isBefore(today, "day")) return;
 
     // console.log(daySlots);
-    daySlots.forEach(function (slot) {
-      var slotSpan = createElement("span", "slot" + slot);
+    daySlots.forEach(function ([hour, price]) {
+      var slotSpan = createElement("span", "slot" + hour);
       element.appendChild(slotSpan);
     });
   };
@@ -273,13 +255,8 @@
         currentOpened.className = "details out";
       }
 
-      //Create the Details Container
-      details = createElement("div", "details in");
-
-      //Create the arrow
+      var details = createElement("div", "details in");
       var arrow = createElement("div", "arrow");
-
-      //Create the event wrapper
 
       details.appendChild(arrow);
       el.parentNode.appendChild(details);
@@ -302,14 +279,14 @@
       "events in" + (currentWrapper ? " new" : "")
     );
 
-    daySlots.forEach(function (slot) {
+    daySlots.forEach(function ([hour,price]) {
       var div = createElement("div", "event");
       div.addEventListener("click", function () {
-        self.slotCallback(date.year(), date.month() + 1, date.date(), slot);
+        self.slotCallback(date.year(), date.month() + 1, date.date(), hour, price);
       });
-      // var text = createElement("span", "entry " + "slot" + slot, `${slot}:00`);
-      var square = createElement("div", "event-category " + "slot" + slot);
-      var span = createElement("span", "", `${slot}:00`);
+      var square = createElement("div", "event-category " + "slot" + hour);
+      // var span = createElement("span", "", slotLabel(hour, price));
+      var span = createElement("span", "", `${hour}:00 (${price}€)`);
 
       div.appendChild(square);
       div.appendChild(span);
@@ -333,17 +310,17 @@
   Calendar.prototype.drawLegend = function (slots) {
     var legend = createElement("div", "legend");
 
-    var timeSlots = [...new Set(slots.flat())].sort(function(a, b){return a - b});
-    // console.log(timeSlots);
+    const timeSlots = [...new Map(slots
+        .flatMap(inner => inner)
+        .map(item => [item[0], item])
+    ).values()].sort((a, b) => a[0] - b[0]);
 
-    timeSlots.forEach(function (slot) {
-      // console.log(slot);
-      // var text = createElement("span", "entry " + "slot" + slot, `${slot}:00`);
-      var div = createElement("div", "event");
-      var text = createElement("div", "event-category " + "slot" + slot);
-      var span = createElement("span", "", `${slot}:00`);
-      legend.appendChild(text);
-      legend.appendChild(span);
+    timeSlots.forEach(function ([hour, price]) {
+      var div = createElement("div", "event-slot");
+      var text = createElement("div", "event-category " + "slot" + hour);
+      var span = createElement("span", "", slotLabel(hour, price));
+      div.appendChild(text);
+      div.appendChild(span);
       legend.appendChild(div);
     });
     return legend;
@@ -388,38 +365,160 @@
 })();
 
 !(function () {
-  onSlotSelect = function (year, month, day, hour) {
-    obj = document.forms["reservation"];
+  onSlotSelect = function (year, month, day, hour, price) {
+    obj = document.forms["payment-form"];
     obj.elements["year"].value = year;
     obj.elements["month"].value = month;
     obj.elements["day"].value = day;
     obj.elements["hour"].value = hour;
 
-    let term = document.getElementById("term");
-    term.innerHTML = `${day}.${month}.${year} ${hour}:00h`;
+    var _hour = (hour == 22) ? "22:00 - 07:00" : `${hour}:00 - ${hour+3}:00`;
+    document.getElementById("term").innerHTML = `${day}.${month}.${year} ${_hour}`;
+    document.getElementById("price").innerHTML = `${price} €`;
 
-    var reservation = document.getElementById("reservation");
-    reservation.scrollIntoView();
+    var paymentForm = document.getElementById("payment-form");
+    paymentForm.scrollIntoView();
   };
 
   var calendar = new Calendar("#calendar", onSlotSelect);
 
-  const form = document.getElementById("reservation");
-  form.addEventListener("submit", function (ev) {
+  const form = document.getElementById("payment-form");
+
+  form.addEventListener("submit", async (ev) => {
     ev.preventDefault();
-    const elements = form.elements;
+    const {
+      name,
+      email,
+      address,
+      phone,
+      year,
+      month,
+      day,
+      hour,
+      discount_code,
+    } = form.elements;
 
-    const name = elements["name"].value;
-    const email = elements["email"].value;
-    const phone = elements["phone"].value;
-    const year = elements["year"].value;
-    const month = elements["month"].value;
-    const day = elements["day"].value;
-    const hour = elements["hour"].value;
+    const errorsDiv = document.getElementById('form_errors');
+    const errors = [];
+    if (!hour.value) errors.push("Prosím zvoľte si svoj termín v kalendári");
+    if (!name.value.trim()) errors.push('Meno je povinné');
+    if (!address.value.trim()) errors.push('Adresa je povinná');
+    if (!email.value.trim()) errors.push('Email je povinný');
+    if (!phone.value.trim()) errors.push('Tel. číslo je povinné');
 
-    if (!hour)
-        alert("Prosím zvoľte si svoj termín v kalendári.");
-    else
-        calendar.submitBooking(name, email, phone, year, month, day, hour);
+    if (errors.length > 0) {
+      errorsDiv.innerHTML = '';
+      const ul = document.createElement('ul');
+      errors.forEach(err => {
+        const li = document.createElement('li');
+        li.textContent = err;
+        ul.appendChild(li);
+      });
+      errorsDiv.appendChild(ul);
+      errorsDiv.style.display = 'block';
+      return;
+    } else {
+      errorsDiv.innerHTML = '';
+      errorsDiv.style.display = 'none';
+    }
+
+    const booking = {
+      name: name.value,
+      email: email.value,
+      address: address.value,
+      phone: phone.value,
+      date: `${year.value}-${month.value.padStart(2, "0")}-${day.value.padStart(2, "0")}`,
+      hour: hour.value,
+      discount_code: discount_code.value,
+    };
+    try {
+      const res = await calendar.submitBooking(booking);
+      const data = await res.json();
+
+      if (res.status === 201) {
+        if (data.is_free) {
+            window.location.href = "/return?id=free";
+            return;
+        }
+        // window.location.href = "success";
+        // _gopay.checkout({gatewayUrl: data.gw_url, inline: true}, function(checkoutResult) { alert(checkoutResult);});
+
+          try {
+            _gopay.checkout({ gatewayUrl: data.gw_url, inline: true });
+          } catch (err) {
+            console.error(err);
+          }
+
+
+      } else if (res.status === 409 || res.status === 422) {
+        showToast(data.detail?.[0]?.msg || data.detail, 5000);
+      } else {
+        showToast("Nastala neočakávaná chyba, skúste prosím neskôr.", 5000);
+      }
+    } catch (err) {
+      showToast(err.message || err, 5000);
+    }
   });
+
+  const discountInput = document.getElementById('discount_code');
+  // Function to check discount code
+  async function checkDiscount(code) {
+    if (!code) {
+      discountInput.className = ""
+      return;
+    }
+    const form = document.getElementById("payment-form");
+    const email = form.elements.email.value;
+
+    try {
+      // Replace this URL with your API endpoint
+      const response = await fetch(`${calendar.api}/validate-discount?code=${encodeURIComponent(code)}&email=${encodeURIComponent(email)}`);
+      const data = await response.json();
+
+      if (data.valid) {
+        discountInput.className = "discount_code_ok"
+      } else {
+        discountInput.className = "discount_code_wrong"
+      }
+    } catch (err) {
+      console.error('Error checking discount code:', err);
+      discountInput.className = ""
+    }
+  }
+  // Debounce function to avoid firing API on every keystroke
+  function debounce(func, delay) {
+    let timeout;
+    return function(...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+  }
+
+  // Attach debounced input listener
+  discountInput.addEventListener('input', debounce((e) => {
+    checkDiscount(e.target.value.trim());
+  }, 500)); // 500ms delay
 })();
+
+window.addEventListener('DOMContentLoaded', () => {
+  const discountInput = document.getElementById('discount_code');
+  const form = document.getElementById('payment-form');
+  const hiddenInputs = form.querySelectorAll('input[type="hidden"]');
+  hiddenInputs.forEach(input => input.value = '');
+
+  const checkbox = document.getElementById("applyDiscount");
+  checkbox.checked = false;
+  discountInput.value = "";
+
+  const discountWrapper = document.getElementById("discount-wrapper");
+  checkbox.addEventListener("change", () => {
+    discountWrapper.style.display = checkbox.checked ? "block" : "none";
+    if (!checkbox.checked) {
+      discountInput.value = "";
+    }
+  });
+  const suhlas = document.getElementById("suhlas");
+  const submit_btn = document.getElementById("submit-form");
+  suhlas.addEventListener("change", () => { submit_btn.disabled = !suhlas.checked; });
+
+});
