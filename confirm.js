@@ -1,5 +1,5 @@
 !(async function () {
-  let api = "https://booking.polnasauna.sk";
+  let api = "https://booking.polnasauna.sk/api/v1";
 
   const urlSearchParams = new URLSearchParams(window.location.search);
   const params = Object.fromEntries(urlSearchParams.entries());

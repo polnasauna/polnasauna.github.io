@@ -1,5 +1,5 @@
 (async function () {
-  const api = "https://booking.polnasauna.sk";
+  const api = "https://booking.polnasauna.sk/api/v1";
   const urlSearchParams = new URLSearchParams(window.location.search);
   const id = urlSearchParams.get("id");
   const msg = document.getElementById("message");
